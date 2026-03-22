@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f9fafb; margin: 0; }
-        
+       
         /* THE CUSTOM CURVED LOGO */
         .logo-wrapper { display: flex; align-items: center; gap: 10px; }
         .flow-logo { position: relative; width: 28px; height: 28px; }
@@ -22,7 +22,6 @@
             border-bottom: 2.5px solid #10b981; border-radius: 50%;
             transform: rotate(-45deg); bottom: 1px;
         }
-
         /* PROJECT CARD STYLING */
         .project-card {
             background-color: #0b1120;
@@ -36,7 +35,6 @@
             transition: border-color 0.3s ease;
         }
         .project-card:hover { border-color: #10b981; }
-
         .status-badge {
             display: inline-block;
             background: rgba(16, 185, 129, 0.1);
@@ -48,7 +46,6 @@
             text-transform: uppercase;
             margin-bottom: 16px;
         }
-
         /* VERIFICATION & SOCIAL LINKS */
         .verify-link {
             display: flex;
@@ -66,12 +63,10 @@
             border-color: #10b981;
             background: rgba(16, 185, 129, 0.05);
         }
-
         .social-icon:hover { color: #10b981; transform: translateY(-2px); }
     </style>
 </head>
 <body class="px-4">
-
     <nav class="fixed top-0 left-0 right-0 z-50 p-4">
         <div class="max-w-7xl mx-auto bg-slate-900/80 backdrop-blur-md rounded-2xl p-4 flex justify-between items-center border border-white/5">
             <div class="logo-wrapper">
@@ -109,13 +104,36 @@
         </div>
         <div class="relative">
             <div class="rounded-[2.5rem] overflow-hidden border border-white/10 aspect-[4/5] shadow-2xl">
-                <img src="alex-authentic.png" class="w-full h-full object-cover" alt="Alex">
+                <img src="FLOWS BY ALEX (1).jpg" class="w-full h-full object-cover" alt="Alex">
                 <div class="absolute bottom-4 left-4 right-4 bg-slate-950/90 backdrop-blur-md p-5 rounded-2xl border border-white/5">
                     <p class="text-[10px] font-bold text-emerald-400 uppercase tracking-[0.2em] mb-1">Motog Alexandru-Mihai</p>
                     <p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest">Automation Specialist</p>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- === NEW LOOM VIDEO SECTION ADDED HERE === -->
+    <section class="py-16 md:py-24 max-w-7xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-black text-center tracking-tighter mb-10 text-white">
+            Quick Process Walkthrough
+        </h2>
+        <div class="aspect-video w-full max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-950">
+            <!-- Replace the src URL with your actual Loom embed link -->
+            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                <iframe 
+                    src="https://www.loom.com/embed/YOUR_VIDEO_ID_HERE?hideEmbedTopBar=true" 
+                    frameborder="0" 
+                    webkitallowfullscreen 
+                    mozallowfullscreen 
+                    allowfullscreen 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                </iframe>
+            </div>
+        </div>
+        <p class="text-center text-slate-400 mt-6 text-lg max-w-3xl mx-auto">
+            2–3 minute demo showing how I structure high-converting Klaviyo flows with conditional splits, A/B logic, and retention triggers.
+        </p>
     </section>
 
     <section id="work" class="py-20 max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -159,7 +177,6 @@
                 <span class="bg-slate-800 px-5 py-2 rounded-full text-[10px] font-bold border border-white/10 uppercase tracking-widest text-slate-300">A/B Testing</span>
             </div>
         </div>
-
         <div class="bg-slate-900/40 p-8 md:p-12 rounded-[2rem] border border-white/5 text-center flex flex-col items-center">
             <h3 class="text-2xl font-bold text-white mb-8 tracking-tighter uppercase">Verified Certs</h3>
             <div class="w-full space-y-4 flex flex-col items-center">
@@ -185,6 +202,5 @@
             <a href="mailto:alexandrumotog@gmail.com" class="bg-emerald-500 text-white font-bold px-12 py-5 rounded-2xl text-lg uppercase tracking-widest inline-block">Email Me Directly</a>
         </div>
     </section>
-
 </body>
 </html>
