@@ -87,7 +87,8 @@
     .service-includes { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
     .service-includes span { font-size: 11px; color: var(--slate-400); display: flex; align-items: center; gap: 7px; }
     .service-includes span::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
-    .service-price { font-size: 13px; font-weight: 700; color: var(--green); letter-spacing: 0.04em; }
+    .service-talk { display: inline-block; margin-top: 4px; background: transparent; border: 1px solid var(--green-border); color: var(--green); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 10px 20px; border-radius: var(--radius); transition: background 0.2s, border-color 0.2s; cursor: pointer; }
+    .service-talk:hover { background: var(--green-dim); border-color: var(--green); }
 
     /* WORK GRID */
     .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -258,28 +259,30 @@
     <p class="section-sub">What I build for your business</p>
     <div class="services-grid">
 
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3>GHL Automation Suite</h3>
-        <p>Full workflow automation inside GoHighLevel — from lead capture to booking, follow-up, and tracking.</p>
-        <div class="service-includes">
-          <span>Inbound webhook + trigger setup</span>
-          <span>Email & SMS sequences</span>
-          <span>Contact tagging & CRM logic</span>
-          <span>Conditional branching</span>
-          <span>Appointment tracking</span>
-        </div>
-        <p class="service-price">From $250</p>
-      </div>
-
+      <!-- 1. Email Campaigns -->
       <div class="service-card">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
-        <h3>Klaviyo Flow Setup</h3>
-        <p>High-converting email and SMS flows built in Klaviyo — from first contact to repeat purchase.</p>
+        <h3>Email Campaigns</h3>
+        <p>One-time broadcast emails that hit the right people with the right message — promotions, launches, announcements.</p>
+        <div class="service-includes">
+          <span>Campaign strategy & copy</span>
+          <span>Design & template build</span>
+          <span>List segmentation</span>
+          <span>A/B subject line testing</span>
+          <span>Scheduling & send</span>
+        </div>
+        <a href="#contact" class="service-talk">Let's Talk →</a>
+      </div>
+
+      <!-- 2. Email Automations -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Email Automations</h3>
+        <p>Triggered email flows that run 24/7 — from welcome sequences to win-back campaigns, all hands-free.</p>
         <div class="service-includes">
           <span>Welcome series (up to 5 emails)</span>
           <span>Abandoned cart recovery</span>
@@ -287,23 +290,75 @@
           <span>Lead nurture flows</span>
           <span>Engagement splits</span>
         </div>
-        <p class="service-price">From $200</p>
+        <a href="#contact" class="service-talk">Let's Talk →</a>
       </div>
 
+      <!-- 3. Sign-Up Forms -->
       <div class="service-card">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
         </div>
-        <h3>Email Template Audit & Fix</h3>
-        <p>If your emails land in spam or look broken on mobile — I find the issues and fix them properly.</p>
+        <h3>Sign-Up Forms</h3>
+        <p>Popups and embedded forms built to capture leads and grow your list — designed to convert, not annoy.</p>
         <div class="service-includes">
-          <span>Full deliverability audit</span>
-          <span>HTML rebuild if needed</span>
-          <span>Mobile rendering fix</span>
-          <span>Spam score reduction</span>
-          <span>Up to 4 templates</span>
+          <span>Popup & embed form design</span>
+          <span>Display targeting rules</span>
+          <span>Discount / incentive setup</span>
+          <span>List & tag integration</span>
+          <span>Mobile-optimised layout</span>
         </div>
-        <p class="service-price">From $100</p>
+        <a href="#contact" class="service-talk">Let's Talk →</a>
+      </div>
+
+      <!-- 4. SMS Campaigns -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>SMS Campaigns</h3>
+        <p>High-open-rate text blasts sent at the right moment — flash sales, reminders, and re-engagement drops.</p>
+        <div class="service-includes">
+          <span>Campaign copy & strategy</span>
+          <span>List segmentation</span>
+          <span>Compliance & opt-out handling</span>
+          <span>Scheduling & send</span>
+          <span>Click tracking</span>
+        </div>
+        <a href="#contact" class="service-talk">Let's Talk →</a>
+      </div>
+
+      <!-- 5. Klaviyo Account Set-Up -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+        </div>
+        <h3>Klaviyo Account Set-Up</h3>
+        <p>Full Klaviyo configuration from scratch — everything wired correctly so your emails land and your data flows.</p>
+        <div class="service-includes">
+          <span>Account & sender config</span>
+          <span>Domain authentication (SPF/DKIM)</span>
+          <span>Integration with your store</span>
+          <span>List & segment structure</span>
+          <span>Sending health check</span>
+        </div>
+        <a href="#contact" class="service-talk">Let's Talk →</a>
+      </div>
+
+      <!-- 6. Account Audit -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+        <h3>Account Audit</h3>
+        <p>I review your existing Klaviyo or GHL setup and tell you exactly what's broken, what's missing, and what to fix first.</p>
+        <div class="service-includes">
+          <span>Flow & workflow audit</span>
+          <span>Deliverability check</span>
+          <span>List hygiene review</span>
+          <span>Revenue gap analysis</span>
+          <span>Written action plan</span>
+        </div>
+        <a href="#contact" class="service-talk">Let's Talk →</a>
       </div>
 
     </div>
@@ -483,10 +538,12 @@
             <label>What do you need?</label>
             <select name="service" required>
               <option value="" disabled selected>Select a service</option>
-              <option value="ghl-automation">GHL Automation Suite</option>
-              <option value="klaviyo-flows">Klaviyo Flow Setup</option>
-              <option value="email-audit">Email Template Audit & Fix</option>
-              <option value="full-suite">Full Automation Suite (GHL + Klaviyo)</option>
+              <option value="email-campaigns">Email Campaigns</option>
+              <option value="email-automations">Email Automations</option>
+              <option value="signup-forms">Sign-Up Forms</option>
+              <option value="sms-campaigns">SMS Campaigns</option>
+              <option value="klaviyo-setup">Klaviyo Account Set-Up</option>
+              <option value="account-audit">Account Audit</option>
               <option value="other">Other / Not sure yet</option>
             </select>
           </div>
@@ -549,6 +606,19 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const form = document.getElementById('contact-form');
-    const success = document.getElementById('fo
+    const success = document.getElementById('form-success');
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+          if (res.ok) { form.style.display = 'none'; success.style.display = 'block'; }
+        } catch(err) { form.submit(); }
+      });
+    }
+  </script>
+</body>
+</html>
