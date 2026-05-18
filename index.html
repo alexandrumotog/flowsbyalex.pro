@@ -11,7 +11,7 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #080812;
+      background: #040408;
       color: #ffffff;
       line-height: 1.5;
       overflow-x: hidden;
@@ -22,9 +22,9 @@
     .page {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 15% 10%, rgba(124, 58, 237, .24), transparent 32%),
-        radial-gradient(circle at 85% 20%, rgba(37, 99, 235, .18), transparent 28%),
-        linear-gradient(180deg, #101026 0%, #080812 48%, #06060c 100%);
+        radial-gradient(circle at 15% 10%, rgba(71, 85, 255, .14), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(0, 119, 255, .10), transparent 24%),
+        linear-gradient(180deg, #05050b 0%, #040408 45%, #020204 100%);
       position: relative;
       overflow: hidden;
     }
@@ -52,9 +52,16 @@
 
     .logo img {
       display: block;
-      width: 180px;
+      width: 240px;
       height: auto;
-      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .logo img {
+      display: block;
+      width: 240px;
+      height: auto;
+      object-fit: contain;
     }
     .nav-links { display: flex; align-items: center; gap: 10px; }
 
@@ -84,8 +91,9 @@
       align-items: stretch;
     }
     .hero-copy {
+      background: rgba(255,255,255,.03);
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.045);
+      background: rgba(255,255,255,.025);
       border-radius: 34px;
       padding: 44px;
       box-shadow: 0 24px 90px rgba(0,0,0,.28);
@@ -138,7 +146,7 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 34px;
-      background: #111118;
+      background: #0a0a12;
       min-height: 100%;
       box-shadow: 0 24px 90px rgba(0,0,0,.28);
     }
@@ -256,6 +264,99 @@
     .footer-links { display: flex; align-items: center; gap: 18px; }
     .footer-links button { background: none; color: #a8a8b7; }
     .footer-links a:hover, .footer-links button:hover { color: #ffffff; }
+  @media (max-width: 980px) {
+      .hero-shell,
+      .problem-grid,
+      .freelancer-card,
+      .cards,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 28px 0 56px;
+      }
+
+      .hero-copy,
+      .side-card,
+      .process,
+      .freelancer-card,
+      .contact-box,
+      .cost-card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 12vw, 58px);
+      }
+
+      h2 {
+        font-size: clamp(30px, 8vw, 44px);
+      }
+
+      .mini-proof {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 8px;
+      }
+
+      .logo img {
+        width: 180px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 20px, 1120px);
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 14px 16px;
+      }
+
+      .hero-copy p,
+      .section-head p,
+      .contact-box p {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .logo img {
+        width: 165px;
+      }
+
+      .flow-item,
+      .card,
+      .step,
+      .bullet,
+      .solution-list div {
+        border-radius: 18px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
@@ -263,8 +364,8 @@
     <header>
       <div class="container">
         <nav>
-          <div class="logo">
-            <img src="flowsbyalex-wave-logo.png" alt="FlowsByAlex logo" />
+          <div class="logo" aria-label="FlowsByAlex logo">
+            <img src="flowsbyalex.pro(4).png" alt="FlowsByAlex logo" />
           </div>
           <div class="nav-links">
             <a class="btn text" href="https://www.linkedin.com/in/flowsbyalex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -397,16 +498,6 @@
         </div>
       </div>
     </footer>
-  </div>
-
-        <form class="popup-form">
-          <input type="email" placeholder="Enter your email" required />
-          <button type="submit">Send me the strategy</button>
-        </form>
-
-        <p class="popup-note">No fluff. Just a practical Klaviyo welcome flow breakdown.</p>
-      </div>
-    </div>
   </div>
 
   <script>
