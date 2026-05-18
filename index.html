@@ -144,6 +144,14 @@
       .hero-card { min-height: auto; }
     }
     @media (max-width: 640px) {
+      nav { align-items: center; }
+      .logo { font-size: 16px; }
+      .btn { padding: 12px 16px; }
+      h1 { line-height: 1.02; }
+      .hero-grid { gap: 28px; }
+      .hero-card img { opacity: .22; }
+      .card, .step, .bullet { padding: 18px; }
+      .footer-links { gap: 14px; }
       .container { width: min(100% - 28px, 1120px); }
       .hero { padding: 34px 0 64px; }
       .hero-actions .btn { width: 100%; }
@@ -170,7 +178,7 @@
         <div class="container">
           <nav>
             <div class="logo">FlowsByAlex</div>
-            <button class="btn primary" onclick="openEmail()">Book a call</button>
+            <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Book a call</a>
           </nav>
         </div>
       </header>
@@ -179,12 +187,12 @@
         <section class="hero">
           <div class="container hero-grid">
             <div>
-              <div class="eyebrow">✦ Email & SMS marketing for ecommerce brands</div>
-              <h1>Turn your list into repeat revenue.</h1>
-              <p>I help ecommerce brands build clean Klaviyo email and SMS systems: flows, campaigns, segmentation, pop-ups, and reporting that make sense.</p>
+              <div class="eyebrow">✦ Klaviyo Email & SMS Retention</div>
+              <h1>Most ecommerce brands overpay for basic retention systems.</h1>
+              <p>Agencies charge thousands for flows, campaigns, segmentation, and SMS systems that can be built and optimized without bloated retainers or unnecessary complexity.</p>
 
               <div class="hero-actions">
-                <button class="btn primary" onclick="openEmail()">Get a free audit →</button>
+                <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Get a free audit →</a>
                 <a class="btn secondary" href="#services">See what I do</a>
               </div>
 
@@ -232,9 +240,25 @@
             </div>
             <div class="bullets">
               <div class="bullet">✓ I can work inside your existing SOP and adapt fast to your process.</div>
-              <div class="bullet">✓ I understand flows, campaigns, segmentation, pop-ups, and metrics.</div>
-              <div class="bullet">✓ I have experience with GHL, Systeme.io, SendPulse, and Klaviyo training.</div>
-              <div class="bullet">✓ I focus on making email and SMS easier to understand, manage, and improve.</div>
+              <div class="bullet">✓ I build, optimize, and manage Klaviyo flows, campaigns, segmentation, and retention systems for ecommerce brands.</div>
+              <div class="bullet">✓ I create retention-focused Klaviyo systems designed to increase repeat purchases and customer lifetime value.</div>
+              <div class="bullet">✓ I optimize email and SMS performance using data, testing, and retention-focused strategies.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-muted">
+          <div class="container split">
+            <div>
+              <p class="label">The problem</p>
+              <h2>Most ecommerce brands overpay for the same retention systems.</h2>
+            </div>
+
+            <div class="bullets">
+              <div class="bullet">✓ Many agencies charge $300-$500/hour for standard Klaviyo setup and management.</div>
+              <div class="bullet">✓ Most brands don't need bloated retainers or overcomplicated reporting.</div>
+              <div class="bullet">✓ You can get the same core flows, campaigns, segmentation, and optimization for a fraction of the cost.</div>
+              <div class="bullet">✓ My focus is simple: retention systems that increase repeat revenue without unnecessary overhead.</div>
             </div>
           </div>
         </section>
@@ -260,7 +284,7 @@
             <h2>Want cleaner email & SMS revenue?</h2>
             <p>Send me your store link and I’ll take a look at your current setup. If I can help, I’ll show you exactly where I’d start.</p>
             <div class="hero-actions" style="justify-content:center">
-              <button class="btn primary" onclick="openEmail()">Request a free audit →</button>
+              <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Request a free audit →</a>
             </div>
           </div>
         </section>
@@ -271,7 +295,7 @@
           <div class="footer-top">
             <div>
               <p>© 2026 FlowsByAlex. Email & SMS Marketing.</p>
-              <small>Independent email & SMS marketing services for ecommerce brands. No revenue guarantees are implied.</small>
+              
             </div>
             <div class="footer-links">
               <a href="https://www.linkedin.com/in/flowsbyalex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -280,10 +304,7 @@
               <a href="#">Terms of Service</a>
             </div>
           </div>
-          <div class="footer-bottom">
-            <p>By contacting or working with FlowsByAlex, you agree that all services, recommendations, and marketing strategies are provided without guaranteed business results.</p>
-            <p>GDPR-friendly communication practices.</p>
-          </div>
+          
         </div>
       </footer>
     </div>
