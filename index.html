@@ -3,17 +3,15 @@ import { ArrowRight, CheckCircle2, Mail, MessageSquare, BarChart3, Workflow, Spa
 
 export default function FlowsByAlexLandingPage() {
   const openEmail = () => {
-    const user = "alexandrumotog";
-    const domain = "gmail.com";
-    const subject = encodeURIComponent("Email & SMS Audit");
-    const body = encodeURIComponent(
-      "Hey Alex,%0D%0A%0D%0AI'd like a free audit for my store:%0D%0A"
-    );
+    const email = ["alexandrumotog", "gmail.com"].join("@");
+    const subject = "Email & SMS Audit";
+    const body = `Hey Alex,
 
-    window.open(
-      `mailto:${user}@${domain}?subject=${subject}&body=${body}`,
-      "_self"
-    );
+I'd like a free audit for my store:
+`;
+    const href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = href;
   };
 
   return (
