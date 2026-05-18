@@ -11,7 +11,7 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #040408;
+      background: #070b14;
       color: #ffffff;
       line-height: 1.5;
       overflow-x: hidden;
@@ -22,9 +22,9 @@
     .page {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 15% 10%, rgba(71, 85, 255, .14), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(0, 119, 255, .10), transparent 24%),
-        linear-gradient(180deg, #05050b 0%, #040408 45%, #020204 100%);
+        radial-gradient(circle at 15% 10%, rgba(102, 126, 234, .20), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(0, 195, 255, .14), transparent 24%),
+        linear-gradient(180deg, #0b1220 0%, #0a101b 45%, #070b14 100%);
       position: relative;
       overflow: hidden;
     }
@@ -33,8 +33,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px);
+        linear-gradient(rgba(180,220,255,.05) 1px, transparent 1px),
+        linear-gradient(to right, rgba(180,220,255,.05) 1px, transparent 1px);
       background-size: 72px 72px;
       pointer-events: none;
       mask-image: linear-gradient(to bottom, black, transparent 75%);
@@ -44,24 +44,32 @@
 
     header { padding: 22px 0; }
     nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
     .logo {
       display: flex;
       align-items: center;
       line-height: 0;
     }
 
-    .logo img {
-      display: block;
-      width: 240px;
-      height: auto;
-      object-fit: contain;
+    .logo-subtext {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.58);
+      font-weight: 700;
+      padding-left: 8px;
     }
 
-    .logo img {
+    .logo svg {
       display: block;
       width: 240px;
       height: auto;
-      object-fit: contain;
     }
     .nav-links { display: flex; align-items: center; gap: 10px; }
 
@@ -78,7 +86,7 @@
     }
     .btn.primary { background: #ffffff; color: #09090f; }
     .btn.primary:hover { transform: translateY(-1px); background: #eeeeee; }
-    .btn.secondary { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); color: #ffffff; }
+    .btn.secondary { background: rgba(120, 180, 255, .09); border: 1px solid rgba(255,255,255,.14); color: #ffffff; }
     .btn.secondary:hover { background: rgba(255,255,255,.1); }
     .btn.text { background: transparent; color: #b9b9c8; padding: 10px 8px; }
     .btn.text:hover { color: #ffffff; }
@@ -105,7 +113,7 @@
       gap: 8px;
       padding: 8px 12px;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
+      background: rgba(120, 180, 255, .09);
       border-radius: 999px;
       color: #d7d7e2;
       font-size: 13px;
@@ -133,7 +141,7 @@
     }
     .mini-proof div {
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.16);
+      background: rgba(10,18,32,.42);
       border-radius: 18px;
       padding: 14px;
       color: #b9b9c8;
@@ -146,16 +154,77 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 34px;
-      background: #0a0a12;
+      background: linear-gradient(180deg, rgba(20,28,46,.92), rgba(9,12,20,.96));
       min-height: 100%;
       box-shadow: 0 24px 90px rgba(0,0,0,.28);
     }
-    .side-card img {
+    .hero-flow-panel {
       width: 100%;
-      height: 210px;
-      object-fit: cover;
-      opacity: .72;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 28% 22%, rgba(87,183,255,.16), transparent 38%),
+        radial-gradient(circle at 82% 74%, rgba(53,208,127,.13), transparent 34%);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .flow-visual {
+      width: 100%;
+      max-width: 420px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .flow-node {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(10,18,32,.62);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.24);
+    }
+
+    .flow-node:nth-child(even) {
+      margin-left: 46px;
+    }
+
+    .flow-dot {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(87,183,255,.24), rgba(53,208,127,.14));
+      border: 1px solid rgba(255,255,255,.12);
+      color: #ffffff;
+      font-weight: 850;
+      font-size: 13px;
+    }
+
+    .flow-node strong {
       display: block;
+      font-size: 14px;
+    }
+
+    .flow-node span {
+      display: block;
+      margin-top: 2px;
+      color: #aeb4c5;
+      font-size: 12px;
+    }
+
+    .flow-line {
+      width: 2px;
+      height: 22px;
+      margin-left: 31px;
+      background: linear-gradient(to bottom, rgba(87,183,255,.55), rgba(53,208,127,.45));
+      border-radius: 99px;
     }
     .side-content { padding: 26px; }
     .label {
@@ -168,7 +237,7 @@
     .flow-list { margin-top: 18px; display: grid; gap: 10px; }
     .flow-item {
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.045);
+      background: rgba(120, 180, 255, .07);
       border-radius: 18px;
       padding: 14px;
     }
@@ -197,22 +266,202 @@
     .solution-list { display: grid; gap: 12px; }
     .solution-list div {
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
+      background: rgba(12,18,34,.45);
       border-radius: 20px;
       padding: 18px;
       color: #d5d5df;
     }
 
     .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 260px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(circle at top right, rgba(87,183,255,.12), transparent 38%),
+        linear-gradient(180deg, rgba(140,180,255,.075), rgba(140,180,255,.035));
+      border-radius: 28px;
+      padding: 24px;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(87,183,255,.26);
+      background:
+        radial-gradient(circle at top right, rgba(87,183,255,.18), transparent 40%),
+        linear-gradient(180deg, rgba(140,180,255,.095), rgba(140,180,255,.045));
+    }
+
+    .service-card .icon {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: rgba(120,180,255,.10);
+      border: 1px solid rgba(255,255,255,.10);
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      line-height: 1.1;
+      letter-spacing: -.025em;
+    }
+
+    .service-card p {
+      margin-top: 12px;
+      color: #b8b8c5;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .service-card .btn {
+      width: 100%;
+      margin-top: 22px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+    }
     .card {
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background: rgba(140, 180, 255, .06);
       border-radius: 26px;
       padding: 24px;
     }
     .card .icon { font-size: 25px; }
     .card h3 { margin-top: 18px; font-size: 18px; }
     .card p { margin-top: 10px; color: #b8b8c5; font-size: 14px; line-height: 1.7; }
+
+    .flow-slider {
+      position: relative;
+      margin-bottom: 32px;
+      border-radius: 34px;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(120deg, rgba(4,4,8,.62), rgba(4,4,8,.92)),
+        radial-gradient(circle at 15% 20%, rgba(31, 162, 255, .28), transparent 34%),
+        radial-gradient(circle at 86% 14%, rgba(72, 221, 60, .18), transparent 30%),
+        radial-gradient(circle at 52% 90%, rgba(255,255,255,.10), transparent 28%);
+      box-shadow: 0 28px 90px rgba(0,0,0,.38);
+    }
+
+    .flow-slider::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(90deg, transparent, black 18%, black 82%, transparent);
+      pointer-events: none;
+    }
+
+    .flow-slider-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .flow-slider-head h3 {
+      margin-top: 8px;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    .flow-track {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(310px, 38%);
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+    }
+
+    .flow-slide {
+      scroll-snap-align: start;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 28px;
+      padding: 28px;
+      background: rgba(8,8,14,.72);
+      backdrop-filter: blur(18px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .flow-slide-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .flow-slide .icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      font-size: 24px;
+    }
+
+    .flow-slide small {
+      color: #8e8ea3;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .14em;
+    }
+
+    .flow-slide h3 {
+      margin-top: 0;
+      font-size: 24px;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+    }
+
+    .flow-slide p {
+      margin-top: 14px;
+      color: #c5c5d1;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .flow-slide .btn.secondary {
+      width: 100%;
+      justify-content: center;
+      margin-top: 24px;
+      background: rgba(255,255,255,.08);
+    }
 
     .freelancer-card {
       display: grid;
@@ -248,11 +497,54 @@
     .step h3 { margin-top: 18px; }
     .step p { margin-top: 8px; color: #555562; font-size: 14px; line-height: 1.65; }
 
+    .architecture-panel {
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+      border-radius: 34px;
+      padding: 34px;
+    }
+
+    .architecture-panel h2 {
+      margin-top: 10px;
+      max-width: 720px;
+    }
+
+    .architecture-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .architecture-steps div {
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(12,18,34,.45);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .architecture-steps small {
+      color: #8e8ea3;
+      font-weight: 800;
+    }
+
+    .architecture-steps h3 {
+      margin-top: 18px;
+      font-size: 18px;
+    }
+
+    .architecture-steps p {
+      margin-top: 8px;
+      color: #b8b8c5;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
     .contact-box {
       text-align: center;
       border-radius: 34px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+      background: rgba(180,220,255,.05);
       padding: 48px 28px;
     }
     .contact-box h2 { margin: 0 auto; max-width: 760px; }
@@ -264,12 +556,124 @@
     .footer-links { display: flex; align-items: center; gap: 18px; }
     .footer-links button { background: none; color: #a8a8b7; }
     .footer-links a:hover, .footer-links button:hover { color: #ffffff; }
+
+    .fit-grid {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:26px;
+    }
+
+    .fit-card {
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      border-radius:26px;
+      padding:26px;
+    }
+
+    .fit-card h3 {
+      font-size:22px;
+      margin-bottom:18px;
+      letter-spacing:-.03em;
+    }
+
+    .fit-list {
+      display:grid;
+      gap:12px;
+    }
+
+    .fit-list div {
+      padding:14px;
+      border-radius:16px;
+      background:rgba(10,18,32,.42);
+      border:1px solid rgba(255,255,255,.08);
+      color:#d6d6e2;
+      font-size:14px;
+    }
+
+    .sticky-mobile-cta {
+      display:none;
+    }
+
+    .stack-strip {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:26px;
+    }
+
+    .stack-pill {
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:#d9d9e5;
+      font-size:14px;
+      backdrop-filter:blur(10px);
+    }
+
+    .metrics-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .metric-card {
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:24px;
+      padding:24px;
+    }
+
+    .metric-card strong {
+      display:block;
+      font-size:34px;
+      line-height:1;
+      letter-spacing:-.05em;
+      margin-bottom:10px;
+    }
+
+    .metric-card span {
+      color:#b8b8c5;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .faq-grid {
+      display:grid;
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .faq-item {
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:22px;
+      padding:22px;
+    }
+
+    .faq-item h3 {
+      font-size:18px;
+      margin-bottom:10px;
+    }
+
+    .faq-item p {
+      color:#b8b8c5;
+      font-size:14px;
+      line-height:1.7;
+    }
   @media (max-width: 980px) {
+      .metrics-grid {
+        grid-template-columns:1fr 1fr;
+      }
+
       .hero-shell,
       .problem-grid,
       .freelancer-card,
       .cards,
-      .steps {
+      .steps,
+      .architecture-steps {
         grid-template-columns: 1fr;
       }
 
@@ -280,6 +684,7 @@
       .hero-copy,
       .side-card,
       .process,
+      .architecture-panel,
       .freelancer-card,
       .contact-box,
       .cost-card {
@@ -303,12 +708,41 @@
         gap: 8px;
       }
 
-      .logo img {
-        width: 180px;
+      .logo svg {
+        width: 220px;
       }
     }
 
     @media (max-width: 640px) {
+      .metrics-grid {
+        grid-template-columns:1fr;
+      }
+
+      .fit-grid {
+        grid-template-columns:1fr;
+      }
+
+      .sticky-mobile-cta {
+        position:fixed;
+        left:12px;
+        right:12px;
+        bottom:12px;
+        z-index:100;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+        padding:10px;
+        border-radius:22px;
+        background:rgba(8,12,20,.92);
+        backdrop-filter:blur(18px);
+        border:1px solid rgba(255,255,255,.10);
+        box-shadow:0 20px 50px rgba(0,0,0,.35);
+      }
+
+      .sticky-mobile-cta .btn {
+        padding:14px 14px;
+      }
+
       .container {
         width: min(100% - 20px, 1120px);
       }
@@ -340,8 +774,8 @@
         flex-direction: column;
       }
 
-      .logo img {
-        width: 165px;
+      .logo svg {
+        width: 200px;
       }
 
       .flow-item,
@@ -356,6 +790,30 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .flow-slider {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .flow-slider-head {
+        display: block;
+      }
+
+      .flow-slider-head p:not(.label) {
+        margin-top: 12px;
+      }
+
+      .flow-track {
+        grid-auto-columns: 86%;
+        gap: 12px;
+      }
+
+      .flow-slide {
+        min-height: 380px;
+        padding: 22px;
+        border-radius: 22px;
+      }
     }
   </style>
 </head>
@@ -364,9 +822,36 @@
     <header>
       <div class="container">
         <nav>
+          <div class="logo-wrap">
           <div class="logo" aria-label="FlowsByAlex logo">
-            <img src="https://raw.githubusercontent.com/alexandrumotog/flowsbyalex.pro/main/flowsbyalex-logo.png" alt="FlowsByAlex logo" />
+            <svg viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FlowsByAlex">
+              <defs>
+                <linearGradient id="navWaveWhite" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#d9dee8"/>
+                </linearGradient>
+                <linearGradient id="navWaveGreen" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#35d07f"/>
+                  <stop offset="100%" stop-color="#1d8f52"/>
+                </linearGradient>
+                <linearGradient id="navWaveBlue" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#57b7ff"/>
+                  <stop offset="100%" stop-color="#2b63ff"/>
+                </linearGradient>
+              </defs>
+
+              <g transform="translate(18 48)">
+                <path d="M0 10C30 -2 58 -2 90 10C116 20 142 22 170 10" fill="none" stroke="url(#navWaveWhite)" stroke-width="10" stroke-linecap="round"/>
+                <path d="M0 42C30 30 58 30 90 42C116 52 142 54 170 42" fill="none" stroke="url(#navWaveGreen)" stroke-width="10" stroke-linecap="round"/>
+                <path d="M0 74C30 62 58 62 90 74C116 84 142 86 170 74" fill="none" stroke="url(#navWaveBlue)" stroke-width="10" stroke-linecap="round"/>
+              </g>
+
+              <text x="240" y="110" fill="#ffffff" font-family="Inter, Arial, Helvetica, sans-serif" font-size="64" font-weight="300" letter-spacing="-3.2">FLOWS</text>
+              <text x="478" y="110" fill="#35d07f" font-family="Inter, Arial, Helvetica, sans-serif" font-size="64" font-weight="300" letter-spacing="-3.2">BY</text>
+              <text x="565" y="110" fill="#ffffff" font-family="Inter, Arial, Helvetica, sans-serif" font-size="64" font-weight="300" letter-spacing="-3.2">ALEX</text>
+            </svg>
           </div>
+        </div>
           <div class="nav-links">
             <a class="btn text" href="https://www.linkedin.com/in/flowsbyalex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Book a call</a>
@@ -380,8 +865,8 @@
         <div class="container hero-shell">
           <div class="hero-copy">
             <div class="badge">✦ Klaviyo Email & SMS for ecommerce brands</div>
-            <h1>Stop overpaying for basic retention systems.</h1>
-            <p>Agencies charge thousands for Klaviyo flows, campaigns, segmentation, and SMS systems. I build and optimize the same core systems as a focused freelancer without bloated retainers.</p>
+            <h1>Email & SMS retention systems for ecommerce brands.</h1>
+            <p>I build lifecycle automations, campaigns, signup forms, segmentation, and deliverability-focused systems that help ecommerce brands turn more visitors into repeat customers.</p>
 
             <div class="hero-actions">
               <button class="btn primary" onclick="openEmail()">Request a free audit →</button>
@@ -391,12 +876,34 @@
             <div class="mini-proof">
               <div><strong>Klaviyo</strong>Email + SMS systems</div>
               <div><strong>Ecommerce</strong>Retention-first setup</div>
-              <div><strong>Limited</strong>Max 6 clients/month</div>
+              <div><strong>Blueprints</strong>Inspectable flow systems</div>
             </div>
           </div>
 
           <aside class="side-card">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1400&auto=format&fit=crop" alt="Analytics dashboard and ecommerce growth metrics" />
+            <div class="hero-flow-panel">
+              <div class="flow-visual" aria-label="Lifecycle flow visual">
+                <div class="flow-node">
+                  <div class="flow-dot">01</div>
+                  <div><strong>Capture</strong><span>Popup + signup forms</span></div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                  <div class="flow-dot">02</div>
+                  <div><strong>Segment</strong><span>Interest and behavior logic</span></div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                  <div class="flow-dot">03</div>
+                  <div><strong>Recover</strong><span>Cart, checkout, browse abandon</span></div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                  <div class="flow-dot">04</div>
+                  <div><strong>Retain</strong><span>Post-purchase and winback flows</span></div>
+                </div>
+              </div>
+            </div>
             <div class="side-content">
               <p class="label">Core retention system</p>
               <div class="flow-list">
@@ -427,7 +934,7 @@
               <div>✓ Core Klaviyo flows built around retention and repeat purchases.</div>
               <div>✓ Campaigns and SMS planned around simple, clear offers.</div>
               <div>✓ Segmentation and reporting without overcomplicated dashboards.</div>
-              <div>✓ Practical execution for a fraction of typical agency overhead.</div>
+              <div>✓ Lean execution without unnecessary account-management layers.</div>
             </div>
           </div>
         </div>
@@ -436,16 +943,65 @@
       <section id="services">
         <div class="container">
           <div class="section-head">
-            <p class="label">What I build</p>
-            <h2>Clean Klaviyo systems for ecommerce retention.</h2>
-            <p>Simple setup, clear execution, and optimization based on what your customers actually do.</p>
+            <p class="label">Services</p>
+            <h2>Email, SMS, flows, forms, and Klaviyo setup.</h2>
+            <p>Focused retention systems for ecommerce brands that need clean execution, better automation, and practical optimization.</p>
           </div>
 
-          <div class="cards">
-            <div class="card"><div class="icon">✉</div><h3>Email Campaigns</h3><p>Campaign planning, setup, and sending for launches, offers, and retention.</p></div>
-            <div class="card"><div class="icon">💬</div><h3>SMS Marketing</h3><p>Short, direct SMS campaigns that support the email strategy without feeling spammy.</p></div>
-            <div class="card"><div class="icon">⚙</div><h3>Automated Flows</h3><p>Welcome, abandoned checkout, post-purchase, winback, and retention flows.</p></div>
-            <div class="card"><div class="icon">📊</div><h3>Optimization</h3><p>Segmentation, testing, reporting, and improvements based on performance.</p></div>
+          <div class="services-grid">
+            <div class="service-card">
+              <div>
+                <div class="icon">✉</div>
+                <h3>Email Campaigns</h3>
+                <p>Campaign planning, copy structure, setup, and sending for launches, promotions, seasonal offers, and retention-focused revenue pushes.</p>
+              </div>
+              <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Let’s talk →</a>
+            </div>
+
+            <div class="service-card">
+              <div>
+                <div class="icon">⚙</div>
+                <h3>Email Automations</h3>
+                <p>Lifecycle automations including welcome, abandoned cart, checkout recovery, browse abandon, post-purchase, win-back, and sunset flows.</p>
+              </div>
+              <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Let’s talk →</a>
+            </div>
+
+            <div class="service-card">
+              <div>
+                <div class="icon">📲</div>
+                <h3>Sign-Up Forms</h3>
+                <p>Mobile and desktop popup systems built around offer clarity, lower friction, zero-party-data capture, and better subscriber quality.</p>
+              </div>
+              <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Let’s talk →</a>
+            </div>
+
+            <div class="service-card">
+              <div>
+                <div class="icon">💬</div>
+                <h3>SMS Campaigns</h3>
+                <p>Short, controlled SMS campaigns that support email without over-sending: offers, launches, reminders, and retention touchpoints.</p>
+              </div>
+              <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Let’s talk →</a>
+            </div>
+
+            <div class="service-card">
+              <div>
+                <div class="icon">🧩</div>
+                <h3>Klaviyo Account Set-Up</h3>
+                <p>Account setup, core settings, lists, segments, sender basics, signup forms, flow foundations, and clean ecommerce retention structure.</p>
+              </div>
+              <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Let’s talk →</a>
+            </div>
+
+            <div class="service-card">
+              <div>
+                <div class="icon">🔎</div>
+                <h3>Account Audit</h3>
+                <p>A practical review of flows, forms, segmentation, campaigns, deliverability risks, tracking gaps, and missed retention opportunities.</p>
+              </div>
+              <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Let’s talk →</a>
+            </div>
           </div>
         </div>
       </section>
@@ -458,7 +1014,7 @@
           </div>
           <div class="bullets">
             <div class="bullet"><span>✓</span> I work as a freelancer, not a large agency with layers of overhead.</div>
-            <div class="bullet"><span>✓</span> I limit capacity to a maximum of 6 clients per month so each brand gets more focus.</div>
+            <div class="bullet"><span>✓</span> Hands-on freelance execution with direct communication and faster iteration.</div>
             <div class="bullet"><span>✓</span> I build, optimize, and manage Klaviyo flows, campaigns, segmentation, and retention systems.</div>
             <div class="bullet"><span>✓</span> I can work inside your existing SOP and adapt quickly to your process.</div>
           </div>
@@ -477,19 +1033,349 @@
         </div>
       </section>
 
+      <section id="blueprint">
+        <div class="container">
+          <div class="section-head">
+            <p class="label">Retention blueprint</p>
+            <h2>Full Ecommerce Retention Blueprint.</h2>
+            <p>Advanced ecommerce lifecycle architecture combining onboarding, recovery systems, segmentation, zero-party-data collection, deliverability structure, and conversion-focused retention automation.</p>
+          </div>
+
+          <div class="cards" style="margin-bottom:18px;">
+            <div class="card">
+              <div class="icon">🔎</div>
+              <h3>Audit & Strategy</h3>
+              <p>Reviewed acquisition sources, subscriber behavior, checkout drop-off points, deliverability risks, segmentation gaps, and lifecycle opportunities.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">📲</div>
+              <h3>Popup System</h3>
+              <p>Desktop and mobile popups optimized for conversion, lower friction, stronger incentives, and zero-party-data collection.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">🧠</div>
+              <h3>Behavior Logic</h3>
+              <p>Conditional splits based on interests, engagement, cart activity, checkout intent, and subscriber profile properties.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">⚙</div>
+              <h3>Optimization</h3>
+              <p>A/B testing, deliverability optimization, offer escalation, CTA testing, timing refinement, and lifecycle flow improvements.</p>
+            </div>
+          </div>
+
+          <div class="freelancer-card" style="margin-bottom:22px;">
+            <div>
+              <p class="label">Systems included</p>
+              <div class="bullets">
+                <div class="bullet"><span>✓</span> Welcome Series Architecture</div>
+                <div class="bullet"><span>✓</span> Abandoned Cart Recovery</div>
+                <div class="bullet"><span>✓</span> Abandoned Checkout Recovery</div>
+                <div class="bullet"><span>✓</span> Post-Purchase + Fulfilled Order Automation</div>
+                <div class="bullet"><span>✓</span> Mobile + desktop popup variants</div>
+                <div class="bullet"><span>✓</span> Zero-party-data segmentation</div>
+                <div class="bullet"><span>✓</span> Deliverability-focused setup</div>
+              </div>
+            </div>
+
+            <div>
+              <p class="label">Strategic execution</p>
+              <div class="solution-list">
+                <div>✓ Convert subscribers into first-time buyers faster</div>
+                <div>✓ Recover abandoned carts before checkout drop-off</div>
+                <div>✓ Recover high-intent checkout users with urgency logic</div>
+                <div>✓ Personalize flows using subscriber interests</div>
+                <div>✓ Increase retention through lifecycle automation</div>
+                <div>✓ Improve deliverability and long-term engagement</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="freelancer-card" style="margin-bottom:22px; align-items:center;">
+            <div>
+              <p class="label">Deliverability proof</p>
+              <h2 style="font-size:clamp(28px,4vw,44px); margin-top:10px;">High-volume sending with stable deliverability.</h2>
+
+              <div class="bullets" style="margin-top:22px;">
+                <div class="bullet"><span>217k+</span> Emails successfully delivered across high-volume campaigns</div>
+                <div class="bullet"><span>98.95%</span> Delivery rate across large-volume campaigns</div>
+                <div class="bullet"><span>0%</span> Spam complaint rate</div>
+                <div class="bullet"><span>0.12%</span> Unsubscribe rate</div>
+              </div>
+            </div>
+
+            <div>
+              <div style="
+                width:100%;
+                border-radius:24px;
+                border:1px solid rgba(255,255,255,.10);
+                background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+                padding:28px;
+                box-shadow:0 20px 60px rgba(0,0,0,.35);
+              ">
+                <p class="label" style="margin-bottom:22px;">Campaign statistics</p>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px;">
+                  <div class="flow-item">
+                    <strong>217,620</strong>
+                    <span>Total emails sent</span>
+                  </div>
+
+                  <div class="flow-item">
+                    <strong>215,341</strong>
+                    <span>Successfully delivered</span>
+                  </div>
+                </div>
+
+                <div class="solution-list">
+                  <div>✓ 98.95% delivery rate maintained across high-volume sending</div>
+                  <div>✓ 0% spam complaint rate during campaign execution</div>
+                  <div>✓ 0.12% unsubscribe rate on large-scale sends</div>
+                  <div>✓ Stable infrastructure warmup and list hygiene management</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-slider">
+            <div class="flow-slider-head">
+              <div>
+                <p class="label">Flow library</p>
+                <h3>Five lifecycle blueprints available to inspect.</h3>
+              </div>
+              <p style="color:#b8b8c5; max-width:420px; font-size:15px; line-height:1.7;">Swipe horizontally on mobile or scroll through each system. Every card links to its own Miro board.</p>
+            </div>
+
+            <div class="flow-track">
+              <article class="flow-slide">
+                <div>
+                  <div class="flow-slide-top">
+                    <div class="icon">✉</div>
+                    <small>01 / ONBOARDING</small>
+                  </div>
+                  <h3>Welcome Series</h3>
+                  <p>Multi-step onboarding flow with conditional branching, offer escalation, interest-based segmentation, and educational product positioning.</p>
+                </div>
+                <a class="btn secondary" href="https://miro.com/app/board/uXjVGg9Mb_g=/?share_link_id=540621909787" target="_blank" rel="noopener noreferrer">View Welcome System →</a>
+              </article>
+
+              <article class="flow-slide">
+                <div>
+                  <div class="flow-slide-top">
+                    <div class="icon">🛒</div>
+                    <small>02 / RECOVERY</small>
+                  </div>
+                  <h3>Abandoned Cart</h3>
+                  <p>Recovery system focused on hesitation removal, urgency timing, dynamic product reminders, and conversion-focused messaging.</p>
+                </div>
+                <a class="btn secondary" href="https://miro.com/app/board/uXjVHRupvu4=/?share_link_id=984416491907" target="_blank" rel="noopener noreferrer">View Abandoned Cart System →</a>
+              </article>
+
+              <article class="flow-slide">
+                <div>
+                  <div class="flow-slide-top">
+                    <div class="icon">💳</div>
+                    <small>03 / CHECKOUT</small>
+                  </div>
+                  <h3>Abandoned Checkout</h3>
+                  <p>High-intent checkout recovery sequence using urgency, objection handling, trust reinforcement, and segmented follow-ups.</p>
+                </div>
+                <a class="btn secondary" href="https://miro.com/app/board/uXjVHRtDvc8=/?share_link_id=330457135593" target="_blank" rel="noopener noreferrer">View Checkout Recovery →</a>
+              </article>
+
+              <article class="flow-slide">
+                <div>
+                  <div class="flow-slide-top">
+                    <div class="icon">👀</div>
+                    <small>04 / INTENT</small>
+                  </div>
+                  <h3>Browse Abandon</h3>
+                  <p>Behavior-based browse recovery flow targeting high-intent visitors with dynamic product reminders, urgency timing, and interest-driven segmentation.</p>
+                </div>
+                <a class="btn secondary" href="https://miro.com/app/board/uXjVGg9SnVk=/?share_link_id=408145699397" target="_blank" rel="noopener noreferrer">View Browse Abandon →</a>
+              </article>
+
+              <article class="flow-slide">
+                <div>
+                  <div class="flow-slide-top">
+                    <div class="icon">📦</div>
+                    <small>05 / RETENTION</small>
+                  </div>
+                  <h3>Post-Purchase + Fulfilled Order</h3>
+                  <p>Lifecycle automation combining thank-you emails, fulfilled order updates, product education, review requests, upsells, reorder timing, and repeat-purchase logic.</p>
+                </div>
+                <a class="btn secondary" href="https://miro.com/app/board/uXjVGg9SnW4=/?share_link_id=606165777978" target="_blank" rel="noopener noreferrer">View Post-Purchase + Fulfilled System →</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="architecture-panel">
+            <p class="label">System architecture</p>
+            <h2>Built around real customer behavior.</h2>
+            <div class="architecture-steps">
+              <div>
+                <small>01</small>
+                <h3>Capture</h3>
+                <p>Visitors enter through mobile and desktop popups designed to improve signup conversion while collecting useful customer data.</p>
+              </div>
+              <div>
+                <small>02</small>
+                <h3>Segment</h3>
+                <p>Subscribers are categorized using interests, browsing behavior, engagement signals, and purchase intent.</p>
+              </div>
+              <div>
+                <small>03</small>
+                <h3>Convert</h3>
+                <p>Automated flows guide customers through onboarding, recovery, and retention with behavior-based messaging.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            
+            <h2>Who this works best for.</h2>
+            <p>Designed for ecommerce brands that already have traffic and need stronger lifecycle retention systems.</p>
+          </div>
+
+          <div class="fit-grid">
+            <div class="fit-card">
+              <h3>Good fit</h3>
+              <div class="fit-list">
+                <div>✓ Shopify ecommerce brands</div>
+                <div>✓ Stores already running paid ads</div>
+                <div>✓ Brands with repeat purchase potential</div>
+                <div>✓ Teams needing cleaner Klaviyo structure</div>
+                <div>✓ Brands wanting leaner execution than agencies</div>
+              </div>
+            </div>
+
+            <div class="fit-card">
+              <h3>Probably not a fit</h3>
+              <div class="fit-list">
+                <div>✕ Stores without product-market fit</div>
+                <div>✕ Brands with no traffic or acquisition</div>
+                <div>✕ Businesses wanting daily agency-style meetings</div>
+                <div>✕ Overcomplicated enterprise reporting needs</div>
+                <div>✕ Teams expecting instant retention results overnight</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact">
         <div class="container contact-box">
-          <h2>Want a cleaner Klaviyo retention system?</h2>
-          <p>Send me your store link for a free audit, or book a call if you want to talk through your current email and SMS setup.</p>
+          <h2>Want a cleaner retention system?</h2>
+          <p>Send me your store link for a free audit, or book a call if you want to talk through your current lifecycle flows, campaigns, forms, and deliverability setup.</p>
           <div class="hero-actions center-actions">
             <button class="btn primary" onclick="openEmail()">Request a free audit →</button>
             <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Book a call</a>
           </div>
         </div>
       </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <p class="label">Tech stack</p>
+            <h2>Built around modern ecommerce tools.</h2>
+            <p>Focused on practical systems, not bloated software stacks or unnecessary complexity.</p>
+          </div>
+
+          <div class="stack-strip">
+            <div class="stack-pill">Shopify</div>
+            <div class="stack-pill">Klaviyo</div>
+            <div class="stack-pill">Postscript</div>
+            <div class="stack-pill">Recharge</div>
+            <div class="stack-pill">Attentive</div>
+            <div class="stack-pill">Triple Whale</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <p class="label">Operational metrics</p>
+            <h2>Focused on lifecycle structure and retention coverage.</h2>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <strong>10+</strong>
+              <span>Lifecycle flows mapped and structured</span>
+            </div>
+
+            <div class="metric-card">
+              <strong>217k+</strong>
+              <span>Emails delivered across high-volume campaigns</span>
+            </div>
+
+            <div class="metric-card">
+              <strong>98.95%</strong>
+              <span>Delivery rate maintained during sending</span>
+            </div>
+
+            <div class="metric-card">
+              <strong>0%</strong>
+              <span>Spam complaint rate across campaigns</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <p class="label">FAQ</p>
+            <h2>Common questions.</h2>
+          </div>
+
+          <div class="faq-grid">
+            <div class="faq-item">
+              <h3>Do you work only with Shopify brands?</h3>
+              <p>Mainly Shopify ecommerce brands using Klaviyo, SMS platforms, and retention-focused lifecycle systems.</p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Do you manage campaigns monthly?</h3>
+              <p>Yes. I can help with campaign planning, setup, segmentation, scheduling, and optimization.</p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Can you optimize existing flows instead of rebuilding everything?</h3>
+              <p>Yes. Most brands already have systems in place. The goal is usually improving structure, timing, segmentation, and conversion logic.</p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Do you write the copy too?</h3>
+              <p>Yes. Flow structure, messaging, CTA hierarchy, and campaign copy are all part of the process.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
+      <div class="container" style="margin-bottom:24px;">
+        <div style="border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); border-radius:28px; padding:26px; display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; align-items:center;">
+          <div>
+            <p class="label">Currently building</p>
+            <h3 style="font-size:28px; margin-top:8px; letter-spacing:-.04em;">Advanced ecommerce retention systems.</h3>
+          </div>
+
+          <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Schedule a call</a>
+        </div>
+      </div>
+
+      
       <div class="container footer-inner">
         <p>© 2026 FlowsByAlex. Email & SMS Marketing.</p>
         <div class="footer-links">
@@ -498,6 +1384,11 @@
         </div>
       </div>
     </footer>
+
+    <div class="sticky-mobile-cta">
+      <button class="btn primary" onclick="openEmail()">Free audit</button>
+      <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Book call</a>
+    </div>
   </div>
 
   <script>
