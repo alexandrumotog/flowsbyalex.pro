@@ -1,622 +1,284 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noon | Functional Mushroom Coffee</title>
-  <meta name="description" content="A landing page inspired by a premium functional mushroom coffee email template." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --cream: #f7eadb;
-      --sand: #ead3be;
-      --paper: #fffaf2;
-      --green: #143f35;
-      --green-2: #0e3029;
-      --gold: #c88b2a;
-      --brown: #7a4a28;
-      --text: #17352e;
-      --muted: #6f7b72;
-      --line: rgba(20, 63, 53, 0.16);
-      --shadow: 0 28px 70px rgba(48, 28, 10, 0.18);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: Inter, system-ui, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(1120px, calc(100% - 36px));
-      margin: 0 auto;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(247, 234, 219, 0.82);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-    }
-
-    .logo {
-      font-family: "Playfair Display", serif;
-      font-size: 30px;
-      color: var(--green);
-      letter-spacing: -0.06em;
-      font-weight: 800;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      color: var(--green);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 14px 22px;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      transition: 0.18s ease;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #fff;
-      box-shadow: 0 16px 36px rgba(200, 139, 42, 0.24);
-    }
-
-    .btn-primary:hover { transform: translateY(-2px); }
-
-    .btn-dark {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .hero {
-      padding: 58px 0 48px;
-    }
-
-    .hero-card {
-      overflow: hidden;
-      border-radius: 36px;
-      background: var(--green);
-      color: white;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      min-height: 650px;
-      box-shadow: var(--shadow);
-      position: relative;
-    }
-
-    .hero-copy {
-      padding: clamp(34px, 6vw, 72px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      color: #f4c978;
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      font-size: 12px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(48px, 7vw, 88px);
-      line-height: 0.92;
-      letter-spacing: -0.055em;
-      margin-bottom: 24px;
-    }
-
-    .hero-copy p {
-      font-size: 18px;
-      color: rgba(255,255,255,0.78);
-      max-width: 540px;
-      margin-bottom: 30px;
-    }
-
-    .hero-points {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-
-    .hero-point {
-      display: flex;
-      gap: 10px;
-      color: rgba(255,255,255,0.86);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .hero-point span {
-      color: #f4c978;
-      font-weight: 900;
-    }
-
-    .hero-visual {
-      background:
-        linear-gradient(rgba(15, 46, 39, 0.15), rgba(15, 46, 39, 0.62)),
-        url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80') center/cover;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 40px;
-      position: relative;
-    }
-
-    .product-pack {
-      width: min(330px, 78%);
-      aspect-ratio: 0.72;
-      background: linear-gradient(160deg, #f8efe4, #d7b995);
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.55);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.32);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 28px;
-      transform: rotate(-3deg);
-    }
-
-    .pack-top {
-      font-family: "Playfair Display", serif;
-      font-size: 42px;
-      color: var(--green);
-      letter-spacing: -0.08em;
-      font-weight: 800;
-    }
-
-    .pack-label {
-      color: var(--green);
-      font-weight: 900;
-      font-size: 22px;
-      line-height: 1.1;
-    }
-
-    .pack-bottom {
-      color: var(--brown);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .trust-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin: 34px 0 0;
-    }
-
-    .trust-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 18px;
-      text-align: center;
-      box-shadow: 0 12px 32px rgba(48, 28, 10, 0.06);
-    }
-
-    .trust-card strong {
-      display: block;
-      color: var(--green);
-      font-size: 15px;
-      margin-bottom: 4px;
-    }
-
-    .trust-card span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    section { padding: 72px 0; }
-
-    .section-head {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 34px;
-    }
-
-    .section-head h2 {
-      font-family: "Playfair Display", serif;
-      color: var(--green);
-      font-size: clamp(34px, 5vw, 58px);
-      letter-spacing: -0.05em;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .ingredients {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .ingredient {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 26px;
-      text-align: center;
-      min-height: 260px;
-      box-shadow: 0 18px 45px rgba(48, 28, 10, 0.07);
-    }
-
-    .ingredient .circle {
-      width: 110px;
-      height: 110px;
-      border-radius: 999px;
-      background: var(--sand);
-      margin: 0 auto 18px;
-      display: grid;
-      place-items: center;
-      font-size: 46px;
-    }
-
-    .ingredient h3 {
-      color: var(--green);
-      margin-bottom: 8px;
-      font-size: 18px;
-      letter-spacing: -0.03em;
-    }
-
-    .ingredient p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .benefit {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 24px;
-    }
-
-    .check {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: rgba(200,139,42,0.13);
-      color: var(--gold);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    .benefit h3 {
-      color: var(--green);
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .benefit p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .image-card {
-      min-height: 520px;
-      border-radius: 34px;
-      overflow: hidden;
-      background: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1100&q=80') center/cover;
-      box-shadow: var(--shadow);
-    }
-
-    .copy-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 34px;
-      padding: clamp(30px, 5vw, 56px);
-      box-shadow: 0 18px 45px rgba(48, 28, 10, 0.07);
-    }
-
-    .copy-card h2 {
-      font-family: "Playfair Display", serif;
-      color: var(--green);
-      font-size: clamp(34px, 5vw, 56px);
-      line-height: 1;
-      letter-spacing: -0.055em;
-      margin-bottom: 16px;
-    }
-
-    .copy-card p {
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
-
-    .steps {
-      display: grid;
-      gap: 12px;
-      margin: 26px 0;
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px;
-      background: #f7efe6;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      color: var(--green);
-      font-weight: 800;
-    }
-
-    .step span {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: var(--gold);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: 12px;
-    }
-
-    .offer {
-      background: var(--green);
-      color: white;
-      border-radius: 36px;
-      padding: clamp(34px, 6vw, 64px);
-      display: grid;
-      grid-template-columns: 1fr 0.75fr;
-      gap: 28px;
-      align-items: center;
-      box-shadow: var(--shadow);
-    }
-
-    .offer h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(38px, 5vw, 62px);
-      line-height: 0.98;
-      letter-spacing: -0.055em;
-      margin-bottom: 16px;
-    }
-
-    .offer p { color: rgba(255,255,255,0.76); margin-bottom: 24px; }
-
-    .price-card {
-      background: var(--paper);
-      color: var(--text);
-      border-radius: 28px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .price-card .old {
-      color: var(--muted);
-      text-decoration: line-through;
-      font-size: 18px;
-    }
-
-    .price-card .new {
-      color: var(--green);
-      font-size: 54px;
-      letter-spacing: -0.08em;
-      font-weight: 900;
-      margin: 4px 0 12px;
-    }
-
-    .footer {
-      background: var(--green-2);
-      color: rgba(255,255,255,0.7);
-      padding: 38px 0;
-      text-align: center;
-    }
-
-    .footer .logo { color: white; margin-bottom: 10px; display: block; }
-
-    @media (max-width: 900px) {
-      .hero-card,
-      .split,
-      .offer {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual { min-height: 520px; }
-      .ingredients,
-      .trust-row { grid-template-columns: repeat(2, 1fr); }
-      .benefits-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 620px) {
-      .nav-links { display: none; }
-      .hero-card { border-radius: 26px; }
-      .hero-copy { padding: 34px 24px; }
-      .ingredients,
-      .trust-row { grid-template-columns: 1fr; }
-      .image-card { min-height: 360px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="logo" href="#">noon</a>
-      <nav class="nav-links">
-        <a href="#ingredients">Ingredients</a>
-        <a href="#benefits">Benefits</a>
-        <a href="#offer" class="btn btn-dark">Shop Now</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-copy">
-            <div class="eyebrow">Mushroom coffee for daily focus</div>
-            <h1>The ingredients that power every scoop.</h1>
-            <p>A smooth coffee alternative blended with functional mushrooms, adaptogens, and clean ingredients built for steady energy without the crash.</p>
-            <div class="hero-points">
-              <div class="hero-point"><span>✓</span> Focus without jitters</div>
-              <div class="hero-point"><span>✓</span> Supports calm, balanced energy</div>
-              <div class="hero-point"><span>✓</span> Made with nootropics and adaptogens</div>
-            </div>
-            <a href="#offer" class="btn btn-primary">Shop Mushroom Coffee</a>
-          </div>
-          <div class="hero-visual">
-            <div class="product-pack">
-              <div class="pack-top">noon</div>
-              <div class="pack-label">Mushroom<br>Coffee</div>
-              <div class="pack-bottom">Functional coffee blend · 30 servings</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="trust-row">
-          <div class="trust-card"><strong>Organic Lion’s Mane</strong><span>Focus support</span></div>
-          <div class="trust-card"><strong>Cordyceps</strong><span>Clean energy</span></div>
-          <div class="trust-card"><strong>Chaga</strong><span>Immune support</span></div>
-          <div class="trust-card"><strong>Ashwagandha</strong><span>Stress support</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="ingredients">
-      <div class="container">
-        <div class="section-head">
-          <h2>Four functional ingredients. One better morning.</h2>
-          <p>Each scoop combines coffee flavor with ingredients selected for energy, cognition, balance, and everyday wellness.</p>
-        </div>
-
-        <div class="ingredients">
-          <article class="ingredient">
-            <div class="circle">🍄</div>
-            <h3>Cordyceps</h3>
-            <p>Traditionally used to support natural energy and physical performance.</p>
-          </article>
-          <article class="ingredient">
-            <div class="circle">🧠</div>
-            <h3>Lion’s Mane</h3>
-            <p>Known for cognitive support, focus, and mental clarity.</p>
-          </article>
-          <article class="ingredient">
-            <div class="circle">🛡️</div>
-            <h3>Chaga</h3>
-            <p>Rich in antioxidants and used to support immune wellness.</p>
-          </article>
-          <article class="ingredient">
-            <div class="circle">🌿</div>
-            <h3>Ashwagandha</h3>
-            <p>An adaptogen used to support calm, balance, and resilience.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="benefits">
-      <div class="container">
-        <div class="section-head">
-          <h2>Built for coffee drinkers who want more from the ritual.</h2>
-          <p>A familiar daily drink, upgraded with functional ingredients and a cleaner energy profile.</p>
-        </div>
-
-        <div class="benefits-grid">
-          <article class="benefit"><div class="check">✓</div><h3>Steady Focus</h3><p>Designed to support attention and clarity during work, study, and deep focus blocks.</p></article>
-          <article class="benefit"><div class="check">✓</div><h3>No Crash Energy</h3><p>A smoother morning ritual for people who dislike caffeine spikes and afternoon crashes.</p></article>
-          <article class="benefit"><div class="check">✓</div><h3>Daily Wellness</h3><p>Functional mushrooms and adaptogens selected for consistent daily support.</p></article>
-          <article class="benefit"><div class="check">✓</div><h3>Supports Immunity</h3><p>Includes ingredients commonly used to support immune and antioxidant health.</p></article>
-          <article class="benefit"><div class="check">✓</div><h3>Clean Routine</h3><p>Simple to mix, easy to drink, and built to fit into your existing morning habit.</p></article>
-          <article class="benefit"><div class="check">✓</div><h3>Balanced Mood</h3><p>Adaptogenic support for a calmer, more balanced start to the day.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container split">
-        <div class="image-card"></div>
-        <div class="copy-card">
-          <h2>Your morning coffee, upgraded.</h2>
-          <p>Swap your second cup for a functional blend designed to support focus, energy, and calm without changing your morning routine.</p>
-          <div class="steps">
-            <div class="step"><span>1</span> Add one scoop to hot water or milk</div>
-            <div class="step"><span>2</span> Stir, froth, or blend</div>
-            <div class="step"><span>3</span> Drink daily for steady support</div>
-          </div>
-          <a href="#offer" class="btn btn-primary">Try It Today</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="offer">
-      <div class="container">
-        <div class="offer">
+import React from "react";
+import { ArrowRight, CheckCircle2, Mail, MessageSquare, BarChart3, Workflow, Sparkles } from "lucide-react";
+
+export default function FlowsByAlexLandingPage() {
+  const openEmail = () => {
+    const user = "alexandrumotog";
+    const domain = "gmail.com";
+    const subject = encodeURIComponent("Email & SMS Audit");
+    const body = encodeURIComponent(
+      "Hey Alex,%0D%0A%0D%0AI'd like a free audit for my store:%0D%0A"
+    );
+
+    window.open(
+      `mailto:${user}@${domain}?subject=${subject}&body=${body}`,
+      "_self"
+    );
+  };
+
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-neutral-950 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.22),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.18),transparent_30%),radial-gradient(circle_at_left,rgba(59,130,246,0.12),transparent_25%)]" />
+      <div className="absolute left-[-120px] top-20 h-[320px] w-[320px] rounded-full bg-purple-500/20 blur-3xl" />
+      <div className="absolute right-[-100px] top-[40%] h-[280px] w-[280px] rounded-full bg-blue-500/20 blur-3xl" />
+      <div className="absolute bottom-[-120px] left-[35%] h-[260px] w-[260px] rounded-full bg-fuchsia-500/20 blur-3xl" />
+      <div className="absolute inset-0 opacity-[0.05] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:80px_80px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02),transparent)]" />
+      <div className="relative z-10">
+      <section className="px-6 py-6 md:px-10">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between">
+          <div className="text-lg font-semibold tracking-tight">FlowsByAlex</div>
+          <a
+            href="#contact"
+            className="rounded-full bg-white px-5 py-2 text-sm font-medium text-neutral-950 transition hover:bg-neutral-200"
+          >
+            Book a call
+          </a>
+        </nav>
+      </section>
+
+      <section className="px-6 pb-20 pt-16 md:px-10 md:pb-28 md:pt-24">
+        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <div>
-            <div class="eyebrow">Limited starter offer</div>
-            <h2>Start your functional coffee ritual.</h2>
-            <p>Get the mushroom coffee blend made for focus, steady energy, and daily wellness support.</p>
-            <a href="#" class="btn btn-primary">Shop Now</a>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-300">
+              <Sparkles size={16} /> Email & SMS marketing for ecommerce brands
+            </div>
+            <h1 className="max-w-3xl text-5xl font-semibold tracking-tight md:text-7xl">
+              Turn your list into repeat revenue.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
+              I help ecommerce brands build clean Klaviyo email and SMS systems: flows, campaigns, segmentation, pop-ups, and reporting that make sense.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-neutral-950 transition hover:bg-neutral-200"
+              >
+                Get a free audit <ArrowRight size={18} />
+              </a>
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-medium text-white transition hover:bg-white/10"
+              >
+                See what I do
+              </a>
+            </div>
+            <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-neutral-400">
+              <a
+                href="https://www.linkedin.com/in/flowsbyalex/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 transition hover:bg-white/10"
+              >
+                <span className="text-sm font-semibold">in</span> LinkedIn
+              </a>
+              <button
+                type="button"
+                onClick={openEmail}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 transition hover:bg-white/10"
+              >
+                <Mail size={16} /> Contact
+              </button>
+              <span>Flows</span>
+              <span>•</span>
+              <span>Campaigns</span>
+              <span>•</span>
+              <span>SMS</span>
+              <span>•</span>
+              <span>Segmentation</span>
+              <span>•</span>
+              <span>Reporting</span>
+            </div>
           </div>
-          <div class="price-card">
-            <div class="old">$49.00</div>
-            <div class="new">$39</div>
-            <p>30 servings · Ships in 24 hours</p>
-            <a href="#" class="btn btn-dark">Add To Cart</a>
+
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1400&auto=format&fit=crop"
+              alt="Email marketing dashboard"
+              className="absolute inset-0 h-full w-full scale-105 object-cover opacity-30"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 via-neutral-950/60 to-neutral-950/95" />
+            <div className="relative z-10">
+            <div className="rounded-[1.5rem] bg-neutral-900 p-6">
+              <p className="text-sm uppercase tracking-[0.2em] text-neutral-500">Revenue system</p>
+              <div className="mt-6 space-y-4">
+                {[
+                  ["Welcome Flow", "Convert new subscribers into first-time buyers"],
+                  ["Abandoned Checkout", "Recover people who almost bought"],
+                  ["Post-Purchase", "Increase repeat purchases and trust"],
+                  ["Winback", "Bring inactive customers back"],
+                ].map(([title, desc]) => (
+                  <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-0.5 shrink-0" size={20} />
+                      <div>
+                        <h3 className="font-medium">{title}</h3>
+                        <p className="mt-1 text-sm text-neutral-400">{desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="footer">
-    <div class="container">
-      <span class="logo">noon</span>
-      <p>Functional coffee for focus, energy, and daily wellness.</p>
+      <section id="services" className="border-y border-white/10 bg-white/[0.03] px-6 py-20 md:px-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-sm uppercase tracking-[0.2em] text-neutral-500">What I do</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">Simple systems that sell without feeling messy.</h2>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-4">
+            {[
+              {
+                icon: <Mail size={26} />,
+                title: "Email Campaigns",
+                desc: "Clean campaign planning, writing direction, setup, and sending.",
+              },
+              {
+                icon: <MessageSquare size={26} />,
+                title: "SMS Marketing",
+                desc: "Short, direct SMS campaigns that support your offers.",
+              },
+              {
+                icon: <Workflow size={26} />,
+                title: "Automated Flows",
+                desc: "Core flows built for acquisition, recovery, retention, and winback.",
+              },
+              {
+                icon: <BarChart3 size={26} />,
+                title: "Optimization",
+                desc: "Segmentation, testing, reporting, and changes based on metrics.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-3xl border border-white/10 bg-neutral-950 p-6">
+                {item.icon}
+                <h3 className="mt-5 text-lg font-medium">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-neutral-400">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20 md:px-10">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-start">
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-neutral-500">Why work with me</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">No overcomplication. Just clear execution.</h2>
+          </div>
+          <div className="space-y-4 text-neutral-300">
+            {[
+              "I can work inside your existing SOP and adapt fast to your process.",
+              "I understand flows, campaigns, segmentation, pop-ups, and metrics.",
+              "I have experience with GHL, Systeme.io, SendPulse, and Klaviyo training.",
+              "I focus on making email and SMS easier to understand, manage, and improve.",
+            ].map((item) => (
+              <div key={item} className="flex gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                <CheckCircle2 className="mt-0.5 shrink-0" size={20} />
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-20 md:px-10">
+        <div className="mx-auto max-w-6xl rounded-[2rem] border border-white/10 bg-white p-8 text-neutral-950 md:p-12">
+          <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.2em] text-neutral-500">Process</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">How it works</h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {[
+                ["01", "Audit", "I review your current email/SMS setup."],
+                ["02", "Build", "We fix or create the key flows and campaigns."],
+                ["03", "Improve", "We track metrics and adjust based on results."],
+              ].map(([num, title, desc]) => (
+                <div key={title} className="rounded-3xl bg-neutral-100 p-5">
+                  <p className="text-sm text-neutral-500">{num}</p>
+                  <h3 className="mt-4 font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-600">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="px-6 pb-24 md:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">Want cleaner email & SMS revenue?</h2>
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-neutral-300">
+            Send me your store link and I’ll take a look at your current setup. If I can help, I’ll show you exactly where I’d start.
+          </p>
+          <button
+            type="button"
+            onClick={openEmail}
+            className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-medium text-neutral-950 transition hover:bg-neutral-200"
+          >
+            Request a free audit <ArrowRight size={18} />
+          </button>
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10 px-6 py-10 md:px-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col items-start justify-between gap-6 border-b border-white/10 pb-6 md:flex-row md:items-center">
+            <div>
+              <p className="text-sm text-neutral-400">
+                © 2026 FlowsByAlex. Email & SMS Marketing.
+              </p>
+              <p className="mt-2 max-w-md text-xs leading-6 text-neutral-500">
+                Independent email & SMS marketing services for ecommerce brands. No revenue guarantees are implied.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-5 text-sm text-neutral-400">
+              <a
+                href="https://www.linkedin.com/in/flowsbyalex/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-white"
+              >
+                LinkedIn
+              </a>
+
+              <button
+                type="button"
+                onClick={openEmail}
+                className="transition hover:text-white"
+              >
+                Contact
+              </button>
+
+              <a href="#" className="transition hover:text-white">
+                Privacy Policy
+              </a>
+
+              <a href="#" className="transition hover:text-white">
+                Terms of Service
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3 pt-6 text-xs leading-6 text-neutral-500 md:flex-row md:items-center md:justify-between">
+            <p>
+              By contacting or working with FlowsByAlex, you agree that all services, recommendations, and marketing strategies are provided without guaranteed business results.
+            </p>
+
+            <p>
+              GDPR-friendly communication practices.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
-  </footer>
-  <script type="text/javascript" async src="https://static.klaviyo.com/onsite/js/Ubz9fp/klaviyo.js"></script>
-</body>
-</html>
+    </main>
+  );
+}
