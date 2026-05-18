@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlowsByAlex | Email & SMS Marketing</title>
-  <meta name="description" content="Email and SMS marketing for ecommerce brands. Flows, campaigns, segmentation, pop-ups, and reporting." />
+  <title>FlowsByAlex | Klaviyo Email & SMS Marketing</title>
+  <meta name="description" content="Freelance Klaviyo email and SMS marketing for ecommerce brands. Flows, campaigns, segmentation, retention, and optimization." />
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #050505;
-      color: #fff;
+      background: #080812;
+      color: #ffffff;
       line-height: 1.5;
       overflow-x: hidden;
     }
@@ -19,302 +20,414 @@
     button { font: inherit; cursor: pointer; border: 0; }
 
     .page {
-      position: relative;
       min-height: 100vh;
-      overflow: hidden;
       background:
-        radial-gradient(circle at top, rgba(99,102,241,0.24), transparent 36%),
-        radial-gradient(circle at bottom right, rgba(168,85,247,0.18), transparent 32%),
-        radial-gradient(circle at left, rgba(59,130,246,0.12), transparent 28%),
-        #050505;
+        radial-gradient(circle at 15% 10%, rgba(124, 58, 237, .24), transparent 32%),
+        radial-gradient(circle at 85% 20%, rgba(37, 99, 235, .18), transparent 28%),
+        linear-gradient(180deg, #101026 0%, #080812 48%, #06060c 100%);
+      position: relative;
+      overflow: hidden;
     }
     .page::before {
       content: "";
       position: fixed;
       inset: 0;
-      pointer-events: none;
-      opacity: .05;
       background-image:
-        linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px),
-        linear-gradient(to right, rgba(255,255,255,.7) 1px, transparent 1px);
-      background-size: 80px 80px;
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
     }
-    .orb { position: absolute; border-radius: 999px; filter: blur(70px); pointer-events: none; }
-    .orb.one { width: 320px; height: 320px; background: rgba(168,85,247,.22); left: -120px; top: 90px; }
-    .orb.two { width: 280px; height: 280px; background: rgba(59,130,246,.20); right: -100px; top: 38%; }
-    .orb.three { width: 260px; height: 260px; background: rgba(217,70,239,.18); left: 35%; bottom: -120px; }
 
-    .wrap { position: relative; z-index: 1; }
-    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .container { width: min(1120px, calc(100% - 36px)); margin: 0 auto; position: relative; z-index: 1; }
 
-    header { padding: 20px 0; }
+    header { padding: 22px 0; }
     nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+    .logo { font-weight: 800; letter-spacing: -0.03em; font-size: 18px; }
+    .nav-links { display: flex; align-items: center; gap: 10px; }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       border-radius: 999px;
-      padding: 12px 20px;
-      font-weight: 600;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 15px;
       transition: .2s ease;
       white-space: nowrap;
     }
-    .btn.primary { background: #fff; color: #050505; }
-    .btn.primary:hover { background: #e7e7e7; }
-    .btn.secondary { border: 1px solid rgba(255,255,255,.16); color: #fff; background: rgba(255,255,255,.04); }
-    .btn.secondary:hover { background: rgba(255,255,255,.10); }
-    .btn.ghost { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); color: #d4d4d4; padding: 9px 14px; font-size: 14px; }
+    .btn.primary { background: #ffffff; color: #09090f; }
+    .btn.primary:hover { transform: translateY(-1px); background: #eeeeee; }
+    .btn.secondary { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); color: #ffffff; }
+    .btn.secondary:hover { background: rgba(255,255,255,.1); }
+    .btn.text { background: transparent; color: #b9b9c8; padding: 10px 8px; }
+    .btn.text:hover { color: #ffffff; }
 
-    .hero { padding: 56px 0 96px; }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
-    .eyebrow {
+    .hero { padding: 54px 0 76px; }
+    .hero-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .78fr);
+      gap: 42px;
+      align-items: stretch;
+    }
+    .hero-copy {
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.045);
+      border-radius: 34px;
+      padding: 44px;
+      box-shadow: 0 24px 90px rgba(0,0,0,.28);
+      backdrop-filter: blur(14px);
+    }
+    .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      color: #d4d4d4;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
       border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 14px;
-      margin-bottom: 20px;
+      color: #d7d7e2;
+      font-size: 13px;
+      margin-bottom: 22px;
     }
-    h1 { max-width: 760px; font-size: clamp(42px, 8vw, 76px); line-height: .95; letter-spacing: -0.06em; font-weight: 750; }
-    .hero p { max-width: 640px; margin-top: 22px; color: #d4d4d4; font-size: 18px; line-height: 1.75; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
-    .chips { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; color: #a3a3a3; font-size: 14px; }
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: .98;
+      letter-spacing: -0.06em;
+      max-width: 760px;
+    }
+    .hero-copy p {
+      margin-top: 22px;
+      max-width: 620px;
+      color: #c9c9d5;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .mini-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 34px;
+    }
+    .mini-proof div {
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      border-radius: 18px;
+      padding: 14px;
+      color: #b9b9c8;
+      font-size: 13px;
+    }
+    .mini-proof strong { display: block; color: #ffffff; font-size: 18px; margin-bottom: 2px; }
 
-    .hero-card {
+    .side-card {
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.10);
-      border-radius: 32px;
-      padding: 24px;
-      min-height: 520px;
+      border-radius: 34px;
+      background: #111118;
+      min-height: 100%;
+      box-shadow: 0 24px 90px rgba(0,0,0,.28);
+    }
+    .side-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      opacity: .72;
+      display: block;
+    }
+    .side-content { padding: 26px; }
+    .label {
+      color: #8e8ea3;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .flow-list { margin-top: 18px; display: grid; gap: 10px; }
+    .flow-item {
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.045);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .flow-item strong { display: block; font-size: 15px; }
+    .flow-item span { display: block; margin-top: 3px; color: #a9a9b8; font-size: 13px; }
+
+    section { padding: 76px 0; }
+    .section-head { max-width: 760px; margin-bottom: 30px; }
+    h2 { font-size: clamp(31px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.045em; }
+    .section-head p { margin-top: 14px; color: #bebecd; font-size: 17px; line-height: 1.7; }
+
+    .problem {
+      border-top: 1px solid rgba(255,255,255,.10);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.035);
+    }
+    .problem-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 34px; align-items: start; }
+    .cost-card {
+      border-radius: 30px;
+      padding: 32px;
+      background: #ffffff;
+      color: #0a0a12;
+    }
+    .cost-card .price { font-size: clamp(42px, 6vw, 66px); line-height: .95; letter-spacing: -0.06em; font-weight: 850; margin-top: 16px; }
+    .cost-card p { margin-top: 14px; color: #4b4b56; font-size: 16px; line-height: 1.7; }
+    .solution-list { display: grid; gap: 12px; }
+    .solution-list div {
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 20px;
+      padding: 18px;
+      color: #d5d5df;
+    }
+
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .card {
+      border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
-      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+      border-radius: 26px;
+      padding: 24px;
     }
-    .hero-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .30; transform: scale(1.05); }
-    .hero-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,5,5,.2), rgba(5,5,5,.65), rgba(5,5,5,.96)); }
-    .flow-box { position: relative; z-index: 1; border-radius: 24px; background: rgba(18,18,18,.92); padding: 24px; backdrop-filter: blur(10px); }
-    .label { color: #737373; font-size: 12px; text-transform: uppercase; letter-spacing: .2em; }
-    .flow-list { margin-top: 24px; display: grid; gap: 14px; }
-    .flow-item { border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); border-radius: 18px; padding: 16px; }
-    .flow-item strong { display: block; font-weight: 650; }
-    .flow-item span { display: block; color: #a3a3a3; font-size: 14px; margin-top: 4px; }
-
-    section { padding: 80px 0; }
-    .section-muted { border-top: 1px solid rgba(255,255,255,.10); border-bottom: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); }
-    h2 { font-size: clamp(32px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.045em; max-width: 720px; }
-    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 38px; }
-    .card { border: 1px solid rgba(255,255,255,.10); background: #080808; border-radius: 26px; padding: 24px; }
-    .card .icon { font-size: 26px; }
+    .card .icon { font-size: 25px; }
     .card h3 { margin-top: 18px; font-size: 18px; }
-    .card p { margin-top: 12px; color: #a3a3a3; font-size: 14px; line-height: 1.7; }
+    .card p { margin-top: 10px; color: #b8b8c5; font-size: 14px; line-height: 1.7; }
 
-    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
-    .bullets { display: grid; gap: 14px; }
-    .bullet { display: flex; gap: 12px; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.035); border-radius: 18px; padding: 16px; color: #d4d4d4; }
-
-    .process { background: #fff; color: #050505; border-radius: 32px; padding: 48px; }
-    .process-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: center; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .step { background: #f1f1f1; border-radius: 24px; padding: 22px; }
-    .step small { color: #737373; }
-    .step h3 { margin-top: 18px; }
-    .step p { margin-top: 8px; color: #525252; font-size: 14px; line-height: 1.65; }
-
-    .contact { text-align: center; padding-top: 24px; }
-    .contact h2 { margin: 0 auto; }
-    .contact p { max-width: 620px; margin: 20px auto 0; color: #d4d4d4; font-size: 18px; line-height: 1.75; }
-
-    footer { border-top: 1px solid rgba(255,255,255,.10); padding: 40px 0; }
-    .footer-top { display: flex; justify-content: space-between; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.10); }
-    .footer-top p { color: #a3a3a3; font-size: 14px; }
-    .footer-top small { display: block; max-width: 440px; margin-top: 8px; color: #737373; line-height: 1.7; }
-    .footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; color: #a3a3a3; font-size: 14px; }
-    .footer-links button { background: none; color: #a3a3a3; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 24px; padding-top: 24px; color: #737373; font-size: 12px; line-height: 1.7; }
-
-    @media (max-width: 900px) {
-      .hero-grid, .split, .process-grid { grid-template-columns: 1fr; }
-      .cards { grid-template-columns: repeat(2, 1fr); }
-      .hero-card { min-height: auto; }
+    .freelancer-card {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 26px;
+      border-radius: 34px;
+      padding: 34px;
+      background: linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.035));
+      border: 1px solid rgba(255,255,255,.10);
     }
+    .bullets { display: grid; gap: 12px; }
+    .bullet {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #d8d8e2;
+      background: rgba(0,0,0,.14);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 15px;
+      border-radius: 18px;
+    }
+    .bullet span { color: #ffffff; font-weight: 850; }
+
+    .process {
+      background: #ffffff;
+      color: #09090f;
+      border-radius: 34px;
+      padding: 40px;
+    }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+    .step { background: #f1f1f4; border-radius: 24px; padding: 22px; }
+    .step small { color: #666674; font-weight: 800; }
+    .step h3 { margin-top: 18px; }
+    .step p { margin-top: 8px; color: #555562; font-size: 14px; line-height: 1.65; }
+
+    .contact-box {
+      text-align: center;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding: 48px 28px;
+    }
+    .contact-box h2 { margin: 0 auto; max-width: 760px; }
+    .contact-box p { margin: 16px auto 0; max-width: 620px; color: #c5c5d1; font-size: 17px; line-height: 1.7; }
+    .center-actions { justify-content: center; }
+
+    footer { border-top: 1px solid rgba(255,255,255,.10); padding: 34px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; color: #a8a8b7; font-size: 14px; }
+    .footer-links { display: flex; align-items: center; gap: 18px; }
+    .footer-links button { background: none; color: #a8a8b7; }
+    .footer-links a:hover, .footer-links button:hover { color: #ffffff; }
+
+    @media (max-width: 920px) {
+      .hero-shell, .problem-grid, .freelancer-card { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .side-card img { height: 190px; }
+    }
+
     @media (max-width: 640px) {
-      nav { align-items: center; }
-      .logo { font-size: 16px; }
-      .btn { padding: 12px 16px; }
-      h1 { line-height: 1.02; }
-      .hero-grid { gap: 28px; }
-      .hero-card img { opacity: .22; }
-      .card, .step, .bullet { padding: 18px; }
-      .footer-links { gap: 14px; }
       .container { width: min(100% - 28px, 1120px); }
-      .hero { padding: 34px 0 64px; }
-      .hero-actions .btn { width: 100%; }
-      .eyebrow { font-size: 12px; }
-      .hero p, .contact p { font-size: 16px; line-height: 1.7; }
-      .chips { gap: 8px; }
-      .hero-card { border-radius: 24px; padding: 16px; }
-      .flow-box { padding: 18px; border-radius: 20px; }
-      section { padding: 64px 0; }
+      header { padding: 16px 0; }
+      .logo { font-size: 16px; }
+      .nav-links .btn.text { display: none; }
+      .btn { width: 100%; padding: 13px 16px; font-size: 15px; }
+      nav .btn { width: auto; padding: 10px 14px; font-size: 14px; }
+
+      .hero { padding: 28px 0 54px; }
+      .hero-copy { padding: 24px; border-radius: 26px; }
+      h1 { font-size: clamp(39px, 11vw, 52px); line-height: 1.02; }
+      .hero-copy p { font-size: 16px; line-height: 1.65; margin-top: 18px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 24px; }
+      .mini-proof { grid-template-columns: 1fr; margin-top: 22px; }
+      .side-card { border-radius: 26px; }
+      .side-card img { height: 150px; }
+      .side-content { padding: 18px; }
+
+      section { padding: 56px 0; }
+      .section-head { margin-bottom: 22px; }
+      .section-head p { font-size: 16px; }
+      .cost-card { padding: 24px; border-radius: 26px; }
       .cards, .steps { grid-template-columns: 1fr; }
-      .process { padding: 24px; border-radius: 24px; }
-      .footer-top, .footer-bottom { flex-direction: column; }
+      .card, .step, .bullet, .solution-list div { padding: 18px; }
+      .freelancer-card, .process, .contact-box { padding: 24px; border-radius: 26px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-    <div class="orb three"></div>
-
-    <div class="wrap">
-      <header>
-        <div class="container">
-          <nav>
-            <div class="logo">FlowsByAlex</div>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">FlowsByAlex</div>
+          <div class="nav-links">
+            <a class="btn text" href="https://www.linkedin.com/in/flowsbyalex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Book a call</a>
-          </nav>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-shell">
+          <div class="hero-copy">
+            <div class="badge">✦ Klaviyo Email & SMS for ecommerce brands</div>
+            <h1>Stop overpaying for basic retention systems.</h1>
+            <p>Agencies charge thousands for Klaviyo flows, campaigns, segmentation, and SMS systems. I build and optimize the same core systems as a focused freelancer without bloated retainers.</p>
+
+            <div class="hero-actions">
+              <button class="btn primary" onclick="openEmail()">Request a free audit →</button>
+              <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Book a call</a>
+            </div>
+
+            <div class="mini-proof">
+              <div><strong>Klaviyo</strong>Email + SMS systems</div>
+              <div><strong>Ecommerce</strong>Retention-first setup</div>
+              <div><strong>Limited</strong>Max 6 clients/month</div>
+            </div>
+          </div>
+
+          <aside class="side-card">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1400&auto=format&fit=crop" alt="Analytics dashboard and ecommerce growth metrics" />
+            <div class="side-content">
+              <p class="label">Core retention system</p>
+              <div class="flow-list">
+                <div class="flow-item"><strong>Welcome Flow</strong><span>Turn new subscribers into first-time buyers</span></div>
+                <div class="flow-item"><strong>Abandoned Checkout</strong><span>Recover visitors who were ready to buy</span></div>
+                <div class="flow-item"><strong>Post-Purchase</strong><span>Build trust and drive repeat orders</span></div>
+                <div class="flow-item"><strong>Winback</strong><span>Bring inactive customers back</span></div>
+              </div>
+            </div>
+          </aside>
         </div>
-      </header>
+      </section>
 
-      <main>
-        <section class="hero">
-          <div class="container hero-grid">
-            <div>
-              <div class="eyebrow">✦ Klaviyo Email & SMS Retention</div>
-              <h1>Most ecommerce brands overpay for basic retention systems.</h1>
-              <p>Agencies charge thousands for flows, campaigns, segmentation, and SMS systems that can be built and optimized without bloated retainers or unnecessary complexity.</p>
+      <section class="problem">
+        <div class="container problem-grid">
+          <div class="cost-card">
+            <p class="label">Typical agency pricing</p>
+            <div class="price">$300-$500/hour</div>
+            <p>That is what many agencies charge for standard Klaviyo setup and management. Most ecommerce brands do not need inflated overhead to get clean retention systems.</p>
+          </div>
 
-              <div class="hero-actions">
-                <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Get a free audit →</a>
-                <a class="btn secondary" href="#services">See what I do</a>
-              </div>
-
-              <div class="chips">
-                <a class="btn ghost" href="https://www.linkedin.com/in/flowsbyalex/" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
-                <button class="btn ghost" onclick="openEmail()">✉ Contact</button>
-                <span>Flows</span><span>•</span><span>Campaigns</span><span>•</span><span>SMS</span><span>•</span><span>Segmentation</span><span>•</span><span>Reporting</span>
-              </div>
+          <div>
+            <div class="section-head">
+              <h2>You do not need a $5k/month agency to build solid Klaviyo retention systems.</h2>
+              <p>You still need strong flows, campaigns, segmentation, and optimization. You just do not need a heavy agency structure to get them built properly.</p>
             </div>
-
-            <div class="hero-card">
-              <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1400&auto=format&fit=crop" alt="Email marketing workspace" />
-              <div class="flow-box">
-                <p class="label">Revenue system</p>
-                <div class="flow-list">
-                  <div class="flow-item"><strong>Welcome Flow</strong><span>Convert new subscribers into first-time buyers</span></div>
-                  <div class="flow-item"><strong>Abandoned Checkout</strong><span>Recover people who almost bought</span></div>
-                  <div class="flow-item"><strong>Post-Purchase</strong><span>Increase repeat purchases and trust</span></div>
-                  <div class="flow-item"><strong>Winback</strong><span>Bring inactive customers back</span></div>
-                </div>
-              </div>
+            <div class="solution-list">
+              <div>✓ Core Klaviyo flows built around retention and repeat purchases.</div>
+              <div>✓ Campaigns and SMS planned around simple, clear offers.</div>
+              <div>✓ Segmentation and reporting without overcomplicated dashboards.</div>
+              <div>✓ Practical execution for a fraction of typical agency overhead.</div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="services" class="section-muted">
-          <div class="container">
-            <p class="label">What I do</p>
-            <h2>Simple systems that sell without feeling messy.</h2>
-
-            <div class="cards">
-              <div class="card"><div class="icon">✉</div><h3>Email Campaigns</h3><p>Clean campaign planning, writing direction, setup, and sending.</p></div>
-              <div class="card"><div class="icon">💬</div><h3>SMS Marketing</h3><p>Short, direct SMS campaigns that support your offers.</p></div>
-              <div class="card"><div class="icon">⚙</div><h3>Automated Flows</h3><p>Core flows built for acquisition, recovery, retention, and winback.</p></div>
-              <div class="card"><div class="icon">📊</div><h3>Optimization</h3><p>Segmentation, testing, reporting, and changes based on metrics.</p></div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div class="container split">
-            <div>
-              <p class="label">Why work with me</p>
-              <h2>No overcomplication. Just clear execution.</h2>
-            </div>
-            <div class="bullets">
-              <div class="bullet">✓ I can work inside your existing SOP and adapt fast to your process.</div>
-              <div class="bullet">✓ I build, optimize, and manage Klaviyo flows, campaigns, segmentation, and retention systems for ecommerce brands.</div>
-              <div class="bullet">✓ I create retention-focused Klaviyo systems designed to increase repeat purchases and customer lifetime value.</div>
-              <div class="bullet">✓ I optimize email and SMS performance using data, testing, and retention-focused strategies.</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-muted">
-          <div class="container split">
-            <div>
-              <p class="label">The problem</p>
-              <h2>Most ecommerce brands overpay for the same retention systems.</h2>
-            </div>
-
-            <div class="bullets">
-              <div class="bullet">✓ Many agencies charge $300-$500/hour for standard Klaviyo setup and management.</div>
-              <div class="bullet">✓ Most brands don't need bloated retainers or overcomplicated reporting.</div>
-              <div class="bullet">✓ You can get the same core flows, campaigns, segmentation, and optimization for a fraction of the cost.</div>
-              <div class="bullet">✓ My focus is simple: retention systems that increase repeat revenue without unnecessary overhead.</div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div class="container process">
-            <div class="process-grid">
-              <div>
-                <p class="label">Process</p>
-                <h2>How it works</h2>
-              </div>
-              <div class="steps">
-                <div class="step"><small>01</small><h3>Audit</h3><p>I review your current email/SMS setup.</p></div>
-                <div class="step"><small>02</small><h3>Build</h3><p>We fix or create the key flows and campaigns.</p></div>
-                <div class="step"><small>03</small><h3>Improve</h3><p>We track metrics and adjust based on results.</p></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" class="contact">
-          <div class="container">
-            <h2>Want cleaner email & SMS revenue?</h2>
-            <p>Send me your store link and I’ll take a look at your current setup. If I can help, I’ll show you exactly where I’d start.</p>
-            <div class="hero-actions" style="justify-content:center">
-              <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Request a free audit →</a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer>
+      <section id="services">
         <div class="container">
-          <div class="footer-top">
-            <div>
-              <p>© 2026 FlowsByAlex. Email & SMS Marketing.</p>
-              
-            </div>
-            <div class="footer-links">
-              <a href="https://www.linkedin.com/in/flowsbyalex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <button onclick="openEmail()">Contact</button>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-            </div>
+          <div class="section-head">
+            <p class="label">What I build</p>
+            <h2>Clean Klaviyo systems for ecommerce retention.</h2>
+            <p>Simple setup, clear execution, and optimization based on what your customers actually do.</p>
           </div>
-          
+
+          <div class="cards">
+            <div class="card"><div class="icon">✉</div><h3>Email Campaigns</h3><p>Campaign planning, setup, and sending for launches, offers, and retention.</p></div>
+            <div class="card"><div class="icon">💬</div><h3>SMS Marketing</h3><p>Short, direct SMS campaigns that support the email strategy without feeling spammy.</p></div>
+            <div class="card"><div class="icon">⚙</div><h3>Automated Flows</h3><p>Welcome, abandoned checkout, post-purchase, winback, and retention flows.</p></div>
+            <div class="card"><div class="icon">📊</div><h3>Optimization</h3><p>Segmentation, testing, reporting, and improvements based on performance.</p></div>
+          </div>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <section>
+        <div class="container freelancer-card">
+          <div>
+            <p class="label">Freelancer model</p>
+            <h2>Fewer clients. More attention per brand.</h2>
+          </div>
+          <div class="bullets">
+            <div class="bullet"><span>✓</span> I work as a freelancer, not a large agency with layers of overhead.</div>
+            <div class="bullet"><span>✓</span> I limit capacity to a maximum of 6 clients per month so each brand gets more focus.</div>
+            <div class="bullet"><span>✓</span> I build, optimize, and manage Klaviyo flows, campaigns, segmentation, and retention systems.</div>
+            <div class="bullet"><span>✓</span> I can work inside your existing SOP and adapt quickly to your process.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container process">
+          <p class="label">Process</p>
+          <h2>How it works</h2>
+          <div class="steps">
+            <div class="step"><small>01</small><h3>Audit</h3><p>I review your current email and SMS setup and find the biggest gaps.</p></div>
+            <div class="step"><small>02</small><h3>Build</h3><p>I create or improve the core flows, campaigns, segments, and pop-ups.</p></div>
+            <div class="step"><small>03</small><h3>Optimize</h3><p>We track the numbers and adjust based on performance, not guesswork.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container contact-box">
+          <h2>Want a cleaner Klaviyo retention system?</h2>
+          <p>Send me your store link for a free audit, or book a call if you want to talk through your current email and SMS setup.</p>
+          <div class="hero-actions center-actions">
+            <button class="btn primary" onclick="openEmail()">Request a free audit →</button>
+            <a class="btn secondary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Book a call</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <p>© 2026 FlowsByAlex. Email & SMS Marketing.</p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/flowsbyalex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <button onclick="openEmail()">Contact</button>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <script>
     function openEmail() {
       const email = ["alexandrumotog", "gmail.com"].join("@");
       const subject = encodeURIComponent("Email & SMS Audit");
-      const body = encodeURIComponent("Hey Alex,\n\nI'd like a free audit for my store:\n");
+      const body = encodeURIComponent(`Hey Alex,
+
+I'd like a free audit for my store:
+`);
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     }
   </script>
