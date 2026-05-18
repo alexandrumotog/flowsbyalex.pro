@@ -9,6 +9,22 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-copy, .side-card, section .container { animation: fadeUp .7s ease both; }
+      .flow-line { animation: pulseLine 2.4s ease-in-out infinite; }
+      .flow-node { transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+      .flow-node:hover { transform: translateX(4px); border-color: rgba(87,183,255,.28); background: rgba(14,24,42,.78); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulseLine {
+      0%, 100% { opacity: .45; transform: scaleY(.9); }
+      50% { opacity: 1; transform: scaleY(1.08); }
+    }
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #070b14;
@@ -491,11 +507,35 @@
       border-radius: 34px;
       padding: 40px;
     }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
-    .step { background: #f1f1f4; border-radius: 24px; padding: 22px; }
+    .steps {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+      margin-top:32px;
+    }
+    .step {
+      background:#f1f1f4;
+      border-radius:24px;
+      padding:26px;
+      min-height:190px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+    }
     .step small { color: #666674; font-weight: 800; }
-    .step h3 { margin-top: 18px; }
-    .step p { margin-top: 8px; color: #555562; font-size: 14px; line-height: 1.65; }
+    .step h3 {
+      margin-top:18px;
+      font-size:24px;
+      line-height:1.05;
+      letter-spacing:-.03em;
+    }
+    .step p {
+      margin-top:10px;
+      color:#555562;
+      font-size:15px;
+      line-height:1.7;
+      max-width:32ch;
+    }
 
     .architecture-panel {
       border: 1px solid rgba(255,255,255,.10);
@@ -714,6 +754,13 @@
     }
 
     @media (max-width: 640px) {
+      body { padding-bottom: 86px; }
+      section { padding: 54px 0; }
+      header { padding: 16px 0 10px; }
+      .hero-flow-panel { min-height: 250px; padding: 20px; }
+      .flow-node:nth-child(even) { margin-left: 22px; }
+      .flow-visual { gap: 10px; }
+      .service-card { min-height: auto; padding: 22px; }
       .metrics-grid {
         grid-template-columns:1fr;
       }
@@ -920,21 +967,21 @@
       <section class="problem">
         <div class="container problem-grid">
           <div class="cost-card">
-            <p class="label">Typical agency pricing</p>
-            <div class="price">$300-$500/hour</div>
-            <p>That is what many agencies charge for standard Klaviyo setup and management. Most ecommerce brands do not need inflated overhead to get clean retention systems.</p>
+            <p class="label">Where brands leak revenue</p>
+            <div class="price">After signup.</div>
+            <p>Most stores spend money getting traffic, then lose customers through weak onboarding, poor recovery flows, generic campaigns, and messy segmentation.</p>
           </div>
 
           <div>
             <div class="section-head">
-              <h2>You do not need a $5k/month agency to build solid Klaviyo retention systems.</h2>
-              <p>You still need strong flows, campaigns, segmentation, and optimization. You just do not need a heavy agency structure to get them built properly.</p>
+              <h2>Your retention system should guide customers through the full lifecycle.</h2>
+              <p>From first signup to checkout recovery, post-purchase education, repeat orders, and reactivation — each flow should have a clear job.</p>
             </div>
             <div class="solution-list">
-              <div>✓ Core Klaviyo flows built around retention and repeat purchases.</div>
-              <div>✓ Campaigns and SMS planned around simple, clear offers.</div>
-              <div>✓ Segmentation and reporting without overcomplicated dashboards.</div>
-              <div>✓ Lean execution without unnecessary account-management layers.</div>
+              <div>✓ Capture visitors with better forms and lower-friction offers.</div>
+              <div>✓ Recover carts, checkouts, and browse intent with behavior-based timing.</div>
+              <div>✓ Retain customers with post-purchase, review, reorder, and winback flows.</div>
+              <div>✓ Protect deliverability with cleaner segmentation and list hygiene.</div>
             </div>
           </div>
         </div>
@@ -1009,14 +1056,14 @@
       <section>
         <div class="container freelancer-card">
           <div>
-            <p class="label">Freelancer model</p>
-            <h2>Fewer clients. More attention per brand.</h2>
+            <p class="label">How I work</p>
+            <h2>Direct execution, not agency layers.</h2>
           </div>
           <div class="bullets">
-            <div class="bullet"><span>✓</span> I work as a freelancer, not a large agency with layers of overhead.</div>
-            <div class="bullet"><span>✓</span> Hands-on freelance execution with direct communication and faster iteration.</div>
-            <div class="bullet"><span>✓</span> I build, optimize, and manage Klaviyo flows, campaigns, segmentation, and retention systems.</div>
-            <div class="bullet"><span>✓</span> I can work inside your existing SOP and adapt quickly to your process.</div>
+            <div class="bullet"><span>✓</span> I work hands-on inside the systems instead of passing work through account managers.</div>
+            <div class="bullet"><span>✓</span> I focus on lifecycle structure: flows, campaigns, forms, segmentation, deliverability, and ongoing A/B testing.</div>
+            <div class="bullet"><span>✓</span> I can improve what already exists or build a clean foundation from scratch.</div>
+            <div class="bullet"><span>✓</span> I document the logic clearly so you understand what each automation is doing.</div>
           </div>
         </div>
       </section>
@@ -1026,9 +1073,12 @@
           <p class="label">Process</p>
           <h2>How it works</h2>
           <div class="steps">
-            <div class="step"><small>01</small><h3>Audit</h3><p>I review your current email and SMS setup and find the biggest gaps.</p></div>
-            <div class="step"><small>02</small><h3>Build</h3><p>I create or improve the core flows, campaigns, segments, and pop-ups.</p></div>
-            <div class="step"><small>03</small><h3>Optimize</h3><p>We track the numbers and adjust based on performance, not guesswork.</p></div>
+            <div class="step"><small>01</small><h3>Audit</h3><p>I review your current flows, forms, campaigns, segments, and deliverability risks.</p></div>
+            <div class="step"><small>02</small><h3>Map</h3><p>I define the lifecycle logic: triggers, timing, splits, offers, and customer paths.</p></div>
+            <div class="step"><small>03</small><h3>Build</h3><p>I create or improve the automations, forms, campaigns, and segmentation structure.</p></div>
+            <div class="step"><small>04</small><h3>QA</h3><p>I check links, mobile layout, exclusions, timing, filters, and customer experience.</p></div>
+            <div class="step"><small>05</small><h3>Launch</h3><p>The systems go live with clean naming, structure, and documentation.</p></div>
+            <div class="step"><small>06</small><h3>Optimize</h3><p>I adjust based on engagement, conversion behavior, deliverability, and flow performance.</p></div>
           </div>
         </div>
       </section>
@@ -1062,8 +1112,8 @@
 
             <div class="card">
               <div class="icon">⚙</div>
-              <h3>Optimization</h3>
-              <p>A/B testing, deliverability optimization, offer escalation, CTA testing, timing refinement, and lifecycle flow improvements.</p>
+              <h3>A/B Testing + Optimization</h3>
+              <p>Subject line testing, CTA experiments, offer testing, timing optimization, split-path testing, deliverability refinement, and lifecycle performance improvements.</p>
             </div>
           </div>
 
@@ -1090,6 +1140,7 @@
                 <div>✓ Personalize flows using subscriber interests</div>
                 <div>✓ Increase retention through lifecycle automation</div>
                 <div>✓ Improve deliverability and long-term engagement</div>
+                <div>✓ Run structured A/B testing across flows, campaigns, forms, and offers</div>
               </div>
             </div>
           </div>
@@ -1270,6 +1321,31 @@
         </div>
       </section>
 
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <p class="label">Lifecycle coverage</p>
+            <h2>Flows covered across the customer journey.</h2>
+          </div>
+
+          <div class="stack-strip">
+            <div class="stack-pill">Welcome Series</div>
+            <div class="stack-pill">Abandoned Cart</div>
+            <div class="stack-pill">Abandoned Checkout</div>
+            <div class="stack-pill">Browse Abandon</div>
+            <div class="stack-pill">Site Abandon</div>
+            <div class="stack-pill">Post-Purchase</div>
+            <div class="stack-pill">Fulfilled Order</div>
+            <div class="stack-pill">Subscription Post-Purchase</div>
+            <div class="stack-pill">Win-Back</div>
+            <div class="stack-pill">Sunset Flow</div>
+            <div class="stack-pill">Google Review</div>
+            <div class="stack-pill">Cancelled Order</div>
+            <div class="stack-pill">Refunded Order</div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact">
         <div class="container contact-box">
           <h2>Want a cleaner retention system?</h2>
@@ -1291,11 +1367,11 @@
 
           <div class="stack-strip">
             <div class="stack-pill">Shopify</div>
+            <div class="stack-pill">WooCommerce</div>
             <div class="stack-pill">Klaviyo</div>
-            <div class="stack-pill">Postscript</div>
-            <div class="stack-pill">Recharge</div>
-            <div class="stack-pill">Attentive</div>
-            <div class="stack-pill">Triple Whale</div>
+            <div class="stack-pill">Figma</div>
+            <div class="stack-pill">Notion</div>
+            <div class="stack-pill">Miro</div>
           </div>
         </div>
       </section>
@@ -1311,6 +1387,11 @@
             <div class="metric-card">
               <strong>10+</strong>
               <span>Lifecycle flows mapped and structured</span>
+            </div>
+
+            <div class="metric-card">
+              <strong>A/B</strong>
+              <span>Testing across subject lines, offers, timing, and CTA variations</span>
             </div>
 
             <div class="metric-card">
@@ -1341,12 +1422,12 @@
           <div class="faq-grid">
             <div class="faq-item">
               <h3>Do you work only with Shopify brands?</h3>
-              <p>Mainly Shopify ecommerce brands using Klaviyo, SMS platforms, and retention-focused lifecycle systems.</p>
+              <p>Mainly Shopify ecommerce brands using Klaviyo and SMS platforms. I can also audit adjacent tools if they affect lifecycle performance.</p>
             </div>
 
             <div class="faq-item">
               <h3>Do you manage campaigns monthly?</h3>
-              <p>Yes. I can help with campaign planning, setup, segmentation, scheduling, and optimization.</p>
+              <p>Yes. I can help with promotional calendars, segmented sends, setup, QA, scheduling, and performance review.</p>
             </div>
 
             <div class="faq-item">
@@ -1356,7 +1437,7 @@
 
             <div class="faq-item">
               <h3>Do you write the copy too?</h3>
-              <p>Yes. Flow structure, messaging, CTA hierarchy, and campaign copy are all part of the process.</p>
+              <p>Yes. Flow structure, messaging, CTA hierarchy, subject lines, and campaign copy are all part of the process.</p>
             </div>
           </div>
         </div>
@@ -1369,6 +1450,7 @@
           <div>
             <p class="label">Currently building</p>
             <h3 style="font-size:28px; margin-top:8px; letter-spacing:-.04em;">Advanced ecommerce retention systems.</h3>
+            <p style="color:#b8b8c5; margin-top:8px;">Email: alexandrumotog@gmail.com</p>
           </div>
 
           <a class="btn primary" href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Schedule a call</a>
@@ -1377,10 +1459,11 @@
 
       
       <div class="container footer-inner">
-        <p>© 2026 FlowsByAlex. Email & SMS Marketing.</p>
+        <p>© 2026 FlowsByAlex. Independent retention systems for ecommerce brands.</p>
         <div class="footer-links">
           <a href="https://www.linkedin.com/in/flowsbyalex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <button onclick="openEmail()">Contact</button>
+          <a href="mailto:alexandrumotog@gmail.com">Email</a>
+          <a href="https://calendly.com/alexandrumotog/30min" target="_blank" rel="noopener noreferrer">Calendly</a>
         </div>
       </div>
     </footer>
